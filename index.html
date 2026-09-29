@@ -30,15 +30,15 @@
       --text-primary:#ffffff;
       --text-secondary:rgba(255,255,255,.72);
       --text-muted:rgba(255,255,255,.48);
-      --gradient-brand:linear-gradient(135deg,#6357E3,#8A7ADA,#54D4E1);
-      --gradient-cta:linear-gradient(135deg,#54D4E1,#58A8E7,#6357E3);
-      --gradient-reverse:linear-gradient(135deg,#6357E3,#58A8E7,#54D4E1);
+      --gradient-brand:linear-gradient(135deg,#6357E3 15%,#8A7ADA 60%,#54D4E1 100%);
+      --gradient-cta:linear-gradient(135deg,#8A7ADA,#6357E3,#4B3FC4);
+      --gradient-reverse:linear-gradient(135deg,#4B3FC4,#6357E3,#8A7ADA);
       --glass-bg:rgba(255,255,255,.04);
       --glass-bg-hover:rgba(255,255,255,.07);
       --glass-border:rgba(255,255,255,.08);
       --glass-border-hover:rgba(255,255,255,.16);
-      --glow-purple:rgba(99,87,227,.35);
-      --glow-cyan:rgba(84,212,225,.25);
+      --glow-purple:rgba(99,87,227,.42);
+      --glow-cyan:rgba(84,212,225,.16);
       --radius-sm:12px;
       --radius-md:20px;
       --radius-lg:28px;
@@ -329,17 +329,18 @@
       line-height: 1;
     }
     .navbar-logo .logo-sub {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 2px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.65);
+      white-space: nowrap;
     }
     .navbar-logo .logo-main {
       font-family: 'League Spartan', sans-serif;
       font-size: 15px;
       font-weight: 800;
       letter-spacing: 0.02em;
+      margin-bottom: 2px;
       color: #fff;
     }
     .navbar-menu {
@@ -541,25 +542,43 @@
     .hero-devices {
       position: relative;
       width: 100%;
-      max-width: 460px;
+      max-width: 420px;
       z-index: 1;
     }
     .hero-device-laptop {
-      position: relative;
+      position: absolute;
       display: block;
-      width: 94%;
-      margin: 0 auto;
+      width: 60%;
+      left: -4%;
+      top: 10%;
+      z-index: 1;
       filter: drop-shadow(0 18px 28px rgba(0,0,0,.5));
       animation: deviceFloatLaptop 7s ease-in-out infinite;
     }
     .hero-device-phone {
       position: absolute;
-      width: 32%;
-      right: 0;
-      bottom: -12%;
+      width: 28%;
+      right: -4%;
+      bottom: 6%;
+      z-index: 1;
       filter: drop-shadow(0 14px 22px rgba(0,0,0,.45));
       animation: deviceFloatPhone 6s ease-in-out infinite;
       animation-delay: .3s;
+    }
+    .hero-portrait {
+      position: relative;
+      display: block;
+      width: 66%;
+      margin: 0 auto;
+      z-index: 2;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border-hover);
+      box-shadow: 0 28px 60px rgba(0,0,0,.55), 0 0 60px var(--glow-purple);
+      animation: heroPortraitFloat 8s ease-in-out infinite;
+    }
+    @keyframes heroPortraitFloat {
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
     }
     @keyframes deviceFloatLaptop {
       0%,100%{ transform: translateY(0) rotate(-1.6deg); }
@@ -570,7 +589,8 @@
       50%{ transform: translateY(-13px) rotate(6deg); }
     }
     @media (max-width: 520px) {
-      .hero-device-phone { width: 30%; right: -2%; }
+      .hero-device-phone { width: 26%; right: -3%; }
+      .hero-device-laptop { width: 56%; left: -3%; }
     }
     .hero-play-btn {
       width: 72px;
@@ -1479,6 +1499,89 @@
       color:var(--text-secondary);
     }
 
+    /* ── Planos (3 níveis) ──────────────────────────── */
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      align-items:start;
+      max-width:1080px;margin:0 auto;
+    }
+    .pricing-card{
+      position:relative;
+      border-radius:var(--radius-lg);
+      padding:32px 28px;
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      display:flex;flex-direction:column;
+      transition:transform .3s,box-shadow .3s,border-color .3s;
+    }
+    .pricing-card:hover{transform:translateY(-4px)}
+    .pricing-card--featured{
+      border-color:rgba(99,87,227,.55);
+      background:var(--glass-bg-hover);
+      box-shadow:0 20px 50px var(--glow-purple);
+    }
+    @media(min-width:769px){
+      .pricing-card--featured{transform:scale(1.04)}
+      .pricing-card--featured:hover{transform:scale(1.04) translateY(-4px)}
+    }
+    .pricing-badge{
+      position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+      background:var(--gradient-cta);
+      color:#fff;font-size:11px;font-weight:800;
+      letter-spacing:.06em;text-transform:uppercase;
+      padding:6px 16px;border-radius:var(--radius-pill);
+      white-space:nowrap;
+      box-shadow:0 6px 18px var(--glow-purple);
+    }
+    .pricing-name{
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-size:20px;font-weight:800;
+      color:var(--text-primary);
+      margin-bottom:6px;
+    }
+    .pricing-price{
+      display:flex;align-items:baseline;gap:4px;
+      margin-bottom:2px;
+    }
+    .pricing-price strong{
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-size:clamp(30px,4vw,38px);font-weight:800;
+      color:var(--text-primary);
+    }
+    .pricing-price span{
+      font-size:14px;color:var(--text-muted);
+    }
+    .pricing-annual{
+      font-size:12.5px;color:var(--text-muted);
+      margin-bottom:18px;
+    }
+    .pricing-tagline{
+      font-size:13.5px;font-weight:700;
+      color:var(--cyan);
+      margin-bottom:16px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--glass-border);
+    }
+    .pricing-features{
+      list-style:none;
+      display:flex;flex-direction:column;gap:12px;
+      margin-bottom:0;
+    }
+    .pricing-features li{
+      display:flex;align-items:flex-start;gap:10px;
+      font-size:14px;line-height:1.4;
+      color:var(--text-secondary);
+    }
+    .pricing-features li img{width:18px;flex-shrink:0;margin-top:1px}
+    .pricing-features li.is-off{color:var(--text-muted)}
+    @media(max-width:768px){
+      .pricing-grid{grid-template-columns:1fr;max-width:400px}
+      .pricing-card--featured{order:-1}
+    }
+
     /* ── Dark Section (Final CTA) ──────────────────── */
     .dark-section{
       position:relative;
@@ -1687,8 +1790,8 @@
         <a href="#" class="navbar-logo">
           <img src="assets/rico.webp" alt="Ricco Logo" class="logo-img-white" />
           <div class="logo-text">
-            <span class="logo-sub">ASSISTENTE</span>
-            <span class="logo-main">CAIXA LUCRATIVO</span>
+            <span class="logo-main">Renata Pontes</span>
+            <span class="logo-sub">Gestão financeira para PMEs</span>
           </div>
         </a>
         <button class="navbar-toggle" aria-label="Abrir menu">
@@ -1728,6 +1831,7 @@
             <div class="hero-devices">
               <img class="hero-device-laptop" src="assets/hero-laptop.png" alt="Dashboard do Ricco mostrando faturamento e histórico financeiro" loading="eager" />
               <img class="hero-device-phone" src="assets/hero-phone.png" alt="Conversa no WhatsApp com o Ricco registrando um gasto e consultando o faturamento" loading="eager" />
+              <img class="hero-portrait" src="assets/renata-foto.webp" alt="Renata Pontes" loading="eager" />
             </div>
             <div class="hero-demo-cta">
               <button class="hero-play-btn" aria-label="Ver demonstração" tabindex="-1">
@@ -2012,8 +2116,53 @@
             </ul>
           </article>
         </div>
-        <h3 class="offer-subtitle reveal">Tudo isso com um investimento acessível</h3>
-        <button class="offer-cta reveal">R$ 197 / mês</button>
+        <h3 class="offer-subtitle reveal">Escolha o nível de clareza que seu negócio precisa</h3>
+        <div class="pricing-grid">
+          <article class="pricing-card reveal reveal-delay-1">
+            <div class="pricing-name">Ricco Registro</div>
+            <div class="pricing-price"><strong>R$ 197</strong><span>/mês</span></div>
+            <div class="pricing-annual">Anual: 12x R$ 167</div>
+            <div class="pricing-tagline">Registra o passado.</div>
+            <ul class="pricing-features">
+              <li><img src="assets/check.webp" alt="" />Lançamento por WhatsApp</li>
+              <li><img src="assets/check.webp" alt="" />Dashboard + DRE do mês</li>
+              <li><img src="assets/check.webp" alt="" />1 CNPJ · 1 usuário</li>
+              <li class="is-off"><img src="assets/cross.webp" alt="" />Sem fluxo de caixa projetado</li>
+              <li class="is-off"><img src="assets/cross.webp" alt="" />Sem metas e alertas</li>
+              <li class="is-off"><img src="assets/cross.webp" alt="" />Sem análise mensal da IA</li>
+            </ul>
+          </article>
+          <article class="pricing-card pricing-card--featured reveal reveal-delay-2">
+            <span class="pricing-badge">Mais escolhido</span>
+            <div class="pricing-name">Ricco Controle</div>
+            <div class="pricing-price"><strong>R$ 297</strong><span>/mês</span></div>
+            <div class="pricing-annual">Anual: 12x R$ 247 · 2 meses grátis</div>
+            <div class="pricing-tagline">Tudo do Registro, e ainda decide o futuro:</div>
+            <ul class="pricing-features">
+              <li><img src="assets/check.webp" alt="" />Fluxo de caixa projetado — 90 dias</li>
+              <li><img src="assets/check.webp" alt="" />Metas e alertas de desvio</li>
+              <li><img src="assets/check.webp" alt="" />Fechamento do mês pela IA</li>
+              <li><img src="assets/check.webp" alt="" />Plano de contas personalizado</li>
+              <li><img src="assets/check.webp" alt="" />Até 3 usuários</li>
+              <li><img src="assets/check.webp" alt="" />Exportação para o contador</li>
+            </ul>
+          </article>
+          <article class="pricing-card reveal reveal-delay-3">
+            <div class="pricing-name">Ricco Sócio</div>
+            <div class="pricing-price"><strong>R$ 697</strong><span>/mês</span></div>
+            <div class="pricing-annual">Anual: 12x R$ 580</div>
+            <div class="pricing-tagline">Tudo do Controle, com gente junto:</div>
+            <ul class="pricing-features">
+              <li><img src="assets/check.webp" alt="" />Até 3 CNPJs · usuários ilimitados</li>
+              <li><img src="assets/check.webp" alt="" />Visão consolidada entre empresas</li>
+              <li><img src="assets/check.webp" alt="" />Acesso liberado para o contador</li>
+              <li><img src="assets/check.webp" alt="" />Revisão humana mensal (30 min)</li>
+              <li><img src="assets/check.webp" alt="" />Onboarding assistido</li>
+              <li><img src="assets/check.webp" alt="" />WhatsApp prioritário</li>
+              <li><img src="assets/check.webp" alt="" />Relatório executivo trimestral</li>
+            </ul>
+          </article>
+        </div>
         <p class="offer-note reveal">Menos que o custo de uma decisão errada.</p>
       </div>
     </section>
