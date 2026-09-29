@@ -1,0 +1,2351 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Caixa Lucrativo Essencial</title>
+    <meta name="description" content="Assistência financeira acessível para MEIs e microempresas. Tecnologia e inteligência artificial para clareza financeira contínua." />
+
+    <link rel="icon" type="image/webp" href="assets/rico.webp" />
+    <link rel="apple-touch-icon" href="assets/rico.webp" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+    @import url('https://fonts.cdnfonts.com/css/gobold');
+
+    /* ── Design System ─────────────────────────────── */
+    :root{
+      --bg-deepest:#06060e;
+      --bg-primary:#0a0a14;
+      --bg-secondary:#0f0f1e;
+      --bg-tertiary:#14142a;
+      --purple:#6357E3;
+      --purple-mid:#8A7ADA;
+      --blue:#58A8E7;
+      --cyan:#54D4E1;
+      --gray-light:#F2F2F2;
+      --text-primary:#ffffff;
+      --text-secondary:rgba(255,255,255,.72);
+      --text-muted:rgba(255,255,255,.48);
+      --gradient-brand:linear-gradient(135deg,#6357E3,#8A7ADA,#54D4E1);
+      --gradient-cta:linear-gradient(135deg,#54D4E1,#58A8E7,#6357E3);
+      --gradient-reverse:linear-gradient(135deg,#6357E3,#58A8E7,#54D4E1);
+      --glass-bg:rgba(255,255,255,.04);
+      --glass-bg-hover:rgba(255,255,255,.07);
+      --glass-border:rgba(255,255,255,.08);
+      --glass-border-hover:rgba(255,255,255,.16);
+      --glow-purple:rgba(99,87,227,.35);
+      --glow-cyan:rgba(84,212,225,.25);
+      --radius-sm:12px;
+      --radius-md:20px;
+      --radius-lg:28px;
+      --radius-xl:36px;
+      --radius-pill:999px;
+    }
+
+    /* ── Reset & Base ──────────────────────────────── */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
+    body{
+      font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+      min-height:100vh;
+      background:var(--bg-deepest);
+      color:var(--text-primary);
+      overflow-x:hidden;
+    }
+    img{max-width:100%;height:auto;display:block}
+    .wrap{width:100%;max-width:1160px;margin:0 auto;padding:0 24px}
+
+    /* ── Keyframe Animations ──────────────────────── */
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(36px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes ctaPulse{
+      0%,100%{box-shadow:0 0 20px var(--glow-purple),0 0 60px var(--glow-cyan)}
+      50%{box-shadow:0 0 35px var(--glow-purple),0 0 90px var(--glow-cyan),0 0 120px rgba(99,87,227,.12)}
+    }
+    @keyframes float{
+      0%,100%{transform:translate(0,0) scale(1)}
+      33%{transform:translate(20px,-20px) scale(1.04)}
+      66%{transform:translate(-15px,12px) scale(.97)}
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+    @keyframes typingBounce{
+      0%,60%,100%{transform:translateY(0)}
+      30%{transform:translateY(-6px)}
+    }
+    @keyframes borderGlow{
+      0%,100%{border-color:rgba(99,87,227,.3)}
+      50%{border-color:rgba(84,212,225,.5)}
+    }
+    @keyframes slideInRight{
+      from{opacity:0;transform:translateX(40px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+    @keyframes slideInLeft{
+      from{opacity:0;transform:translateX(-40px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+    @keyframes scaleIn{
+      from{opacity:0;transform:scale(.85)}
+      to{opacity:1;transform:scale(1)}
+    }
+    @keyframes shimmer{
+      0%{background-position:-200% 0}
+      100%{background-position:200% 0}
+    }
+    @keyframes onlinePulse{
+      0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(39,200,64,.5)}
+      50%{opacity:.8;box-shadow:0 0 0 6px rgba(39,200,64,0)}
+    }
+    @keyframes mascotGlowPulse{
+      0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.5}
+      50%{transform:translate(-50%,-50%) scale(1.18);opacity:.85}
+    }
+    @keyframes heroGlowPulse{
+      0%,100%{opacity:.55;transform:scale(1)}
+      50%{opacity:.85;transform:scale(1.08)}
+    }
+
+    /* ── Scroll Reveal ────────────────────────────── */
+    .reveal{
+      opacity:0;
+      transform:translateY(36px);
+      transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.revealed{
+      opacity:1;
+      transform:translateY(0);
+    }
+    .reveal-delay-1{transition-delay:.12s}
+    .reveal-delay-2{transition-delay:.24s}
+    .reveal-delay-3{transition-delay:.36s}
+
+    /* ── Gradient Text Utility ────────────────────── */
+    .gradient-text{
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    /* ── Lead Modal ───────────────────────────────── */
+    .lead-modal{
+      position:fixed;inset:0;z-index:100;
+      display:grid;place-items:center;padding:24px;
+      background:rgba(6,6,14,.85);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    }
+    .lead-modal[hidden]{display:none}
+    .lead-form{
+      width:min(500px,100%);
+      border-radius:var(--radius-lg);
+      padding:36px 32px;
+      background:var(--bg-secondary);
+      border:1px solid var(--glass-border);
+      box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 60px var(--glow-purple);
+    }
+    .lead-form h2{
+      margin:0 0 8px;
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-size:34px;font-weight:800;
+      line-height:1.1;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .lead-form>p{
+      margin:0 0 24px;
+      color:var(--text-secondary);
+      font-size:15px;line-height:1.55;
+    }
+    .lead-fields{display:grid;gap:16px}
+    .lead-field{display:grid;gap:5px}
+    .lead-field label{
+      color:var(--text-secondary);font-size:13px;font-weight:700;
+      text-transform:uppercase;letter-spacing:.06em;
+    }
+    .lead-field input,
+    .lead-field select{
+      width:100%;min-height:48px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:var(--radius-sm);
+      padding:0 16px;
+      color:#fff;
+      background:rgba(255,255,255,.05);
+      font:500 15px 'Montserrat',system-ui,sans-serif;
+      transition:border-color .25s,box-shadow .25s;
+    }
+    .lead-field input::placeholder{color:var(--text-muted)}
+    .lead-field input:focus,
+    .lead-field select:focus{
+      outline:none;
+      border-color:var(--cyan);
+      box-shadow:0 0 0 3px rgba(84,212,225,.18);
+    }
+    .lead-field select option{background:#1a1a2e;color:#fff}
+    .lead-submit{
+      width:100%;min-height:52px;margin-top:20px;
+      border:none;border-radius:var(--radius-pill);
+      background:var(--gradient-cta);
+      color:#fff;font-size:17px;font-weight:800;
+      font-family:'Montserrat',sans-serif;
+      cursor:pointer;
+      transition:transform .2s,box-shadow .2s;
+      box-shadow:0 8px 28px var(--glow-purple);
+    }
+    .lead-submit:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 36px var(--glow-purple),0 0 50px var(--glow-cyan);
+    }
+    .lead-submit:disabled{cursor:not-allowed;opacity:.65}
+    .lead-feedback{
+      min-height:18px;margin:10px 0 0;
+      color:#ff6b6b;font-size:13px;font-weight:700;
+    }
+
+    /* ── Demo Popup ─────────────────────────────────── */
+    .demo-popup{
+      position:fixed;
+      top:100px;right:24px;
+      z-index:98;
+      width:min(320px,calc(100vw - 32px));
+      background:var(--bg-secondary);
+      border:1px solid var(--glass-border);
+      border-radius:var(--radius-md);
+      padding:20px 20px 18px;
+      box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px var(--glow-purple);
+      transform:translateY(-16px) translateX(8px);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .4s ease,transform .4s ease;
+    }
+    .demo-popup.visible{
+      opacity:1;
+      transform:translateY(0) translateX(0);
+      pointer-events:auto;
+    }
+    .demo-popup-close{
+      position:absolute;top:10px;right:10px;
+      width:24px;height:24px;
+      border:none;border-radius:50%;
+      background:rgba(255,255,255,.06);
+      color:var(--text-muted);
+      font-size:14px;line-height:1;
+      cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      transition:background .2s,color .2s;
+    }
+    .demo-popup-close:hover{background:rgba(255,255,255,.12);color:var(--text-primary)}
+    .demo-popup-head{
+      display:flex;align-items:center;gap:10px;
+      margin-bottom:10px;
+    }
+    .demo-popup-head img{width:32px;height:32px;flex-shrink:0}
+    .demo-popup-head strong{
+      font-family:'League Spartan',sans-serif;
+      font-size:15px;font-weight:800;
+    }
+    .demo-popup p{
+      color:var(--text-secondary);
+      font-size:13.5px;line-height:1.55;
+      margin:0 0 16px;
+    }
+    .demo-popup-actions{display:flex;gap:10px}
+    .demo-popup-cta{
+      flex:1;
+      min-height:40px;
+      border:none;border-radius:var(--radius-pill);
+      background:var(--gradient-cta);
+      color:#fff;font-size:13px;font-weight:800;
+      font-family:'Montserrat',sans-serif;
+      cursor:pointer;
+      text-decoration:none;
+      display:flex;align-items:center;justify-content:center;
+      transition:transform .2s,box-shadow .2s;
+      box-shadow:0 6px 20px var(--glow-purple);
+    }
+    .demo-popup-cta:hover{
+      transform:translateY(-1px);
+      box-shadow:0 10px 28px var(--glow-purple),0 0 36px var(--glow-cyan);
+    }
+    .demo-popup-dismiss{
+      min-height:40px;padding:0 14px;
+      border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-pill);
+      background:transparent;
+      color:var(--text-muted);font-size:13px;font-weight:600;
+      font-family:'Montserrat',sans-serif;
+      cursor:pointer;
+      transition:border-color .2s,color .2s;
+    }
+    .demo-popup-dismiss:hover{border-color:rgba(255,255,255,.24);color:var(--text-secondary)}
+    @media(max-width:520px){
+      .demo-popup{top:auto;bottom:16px;right:16px;left:16px;width:auto}
+    }
+
+    /* ── Header / Navigation ───────────────────────── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 95;
+      background: rgba(6, 6, 14, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+    }
+    .navbar-container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .navbar-logo .logo-img-white {
+      width: 34px;
+      height: 34px;
+      filter: brightness(0) invert(1);
+    }
+    .navbar-logo .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .navbar-logo .logo-sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2px;
+    }
+    .navbar-logo .logo-main {
+      font-family: 'League Spartan', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+    .navbar-menu {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+    .navbar-menu a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .navbar-menu a:hover {
+      color: var(--cyan);
+    }
+    .navbar-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 100;
+      padding: 0;
+    }
+    .navbar-toggle span {
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+      transform-origin: left center;
+    }
+    .navbar-toggle.active span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+    .navbar-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .navbar-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    /* ── Hero ─────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(99,87,227,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 30% 70%, rgba(84,212,225,.1) 0%, transparent 60%),
+        var(--bg-deepest);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle,rgba(99,87,227,.18),transparent 70%);
+      border-radius: 50%;
+      top: -120px;
+      right: -150px;
+      animation: float 12s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle,rgba(84,212,225,.12),transparent 70%);
+      border-radius: 50%;
+      bottom: -80px;
+      left: -100px;
+      animation: float 15s ease-in-out infinite reverse;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-content {
+      text-align: left;
+    }
+    .hero-overline {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+      color: var(--cyan);
+      display: inline-flex;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 460px;
+      margin-bottom: 16px;
+    }
+    .hero-overline::before {
+      content: '';
+      width: 3px;
+      flex-shrink: 0;
+      margin-top: 4px;
+      align-self: stretch;
+      background: var(--cyan);
+      border-radius: 2px;
+    }
+    .hero-title {
+      font-family: 'League Spartan', sans-serif;
+      font-size: clamp(38px, 5.5vw, 68px);
+      line-height: 0.95;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-title span {
+      display: block;
+    }
+    .hero-title .highlight {
+      background: var(--gradient-brand);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      max-width: 540px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .hero-actions .btn {
+      padding: 16px 36px;
+      font-size: 16px;
+    }
+    .hero-actions .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--glass-border);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: var(--radius-pill);
+      font-size: 16px;
+      font-weight: 700;
+      font-family: 'League Spartan', sans-serif;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .hero-actions .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    .hero-visual {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      padding: 20px 0;
+      z-index: 1;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: -12%;
+      background:
+        radial-gradient(ellipse 55% 50% at 38% 58%, var(--glow-purple), transparent 72%),
+        radial-gradient(ellipse 42% 38% at 72% 32%, var(--glow-cyan), transparent 70%);
+      filter: blur(18px);
+      animation: heroGlowPulse 5s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-devices {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      z-index: 1;
+    }
+    .hero-device-laptop {
+      position: relative;
+      display: block;
+      width: 94%;
+      margin: 0 auto;
+      filter: drop-shadow(0 18px 28px rgba(0,0,0,.5));
+      animation: deviceFloatLaptop 7s ease-in-out infinite;
+    }
+    .hero-device-phone {
+      position: absolute;
+      width: 32%;
+      right: 0;
+      bottom: -12%;
+      filter: drop-shadow(0 14px 22px rgba(0,0,0,.45));
+      animation: deviceFloatPhone 6s ease-in-out infinite;
+      animation-delay: .3s;
+    }
+    @keyframes deviceFloatLaptop {
+      0%,100%{ transform: translateY(0) rotate(-1.6deg); }
+      50%{ transform: translateY(-9px) rotate(-1deg); }
+    }
+    @keyframes deviceFloatPhone {
+      0%,100%{ transform: translateY(0) rotate(5deg); }
+      50%{ transform: translateY(-13px) rotate(6deg); }
+    }
+    @media (max-width: 520px) {
+      .hero-device-phone { width: 30%; right: -2%; }
+    }
+    .hero-play-btn {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--gradient-brand);
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(99, 87, 227, 0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      z-index: 2;
+      flex-shrink: 0;
+    }
+    .hero-play-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 45px rgba(99, 87, 227, 0.8), 0 0 30px rgba(84, 212, 225, 0.4);
+    }
+    .hero-play-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      transform: translateX(2px);
+    }
+    .hero-demo-cta {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px 10px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(6,6,14,.55);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 2;
+      transition: background .3s, border-color .3s, transform .3s;
+    }
+    .hero-visual:hover .hero-demo-cta {
+      background: rgba(6,6,14,.72);
+      border-color: var(--glass-border-hover);
+      transform: translateY(-2px);
+    }
+    .hero-demo-cta .hero-play-btn { width: 44px; height: 44px; }
+    .hero-demo-cta span:last-child {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .btn {
+      display:inline-flex;align-items:center;gap:10px;
+      border:none;border-radius:var(--radius-pill);
+      padding:20px 52px;
+      font-size:clamp(18px,2.5vw,28px);
+      font-weight:700;
+      font-family:'League Spartan','Poppins',sans-serif;
+      letter-spacing:.01em;color:#fff;
+      background:var(--gradient-cta);
+      cursor:pointer;text-decoration:none;
+      transition:transform .2s ease,box-shadow .2s ease;
+      animation:ctaPulse 3s ease-in-out infinite;
+    }
+    .btn:hover,.btn:focus-visible{
+      transform:translateY(-3px) scale(1.02);
+    }
+    @media (max-width: 960px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        text-align: center;
+      }
+      .hero-content {
+        text-align: center;
+      }
+      .hero-overline {
+        justify-content: center;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+    }
+
+    /* ── Checklist Section ─────────────────────────── */
+    .checklist{
+      padding:80px 24px 60px;
+      position:relative;overflow:hidden;
+      background:
+        linear-gradient(180deg,var(--bg-deepest) 0%,var(--bg-secondary) 100%);
+    }
+    .checklist::before{
+      content:'';position:absolute;
+      width:380px;height:380px;
+      background:radial-gradient(circle,rgba(99,87,227,.14),transparent 70%);
+      border-radius:50%;
+      top:-140px;right:-120px;
+      animation:float 14s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .checklist::after{
+      content:'';position:absolute;
+      width:320px;height:320px;
+      background:radial-gradient(circle,rgba(84,212,225,.1),transparent 70%);
+      border-radius:50%;
+      bottom:-100px;left:-100px;
+      animation:float 17s ease-in-out infinite reverse;
+      pointer-events:none;
+    }
+    .checklist .wrap{position:relative;z-index:1}
+    .checklist h2{
+      margin:0 0 40px;
+      font-size:clamp(32px,5.5vw,62px);
+      font-weight:700;
+      font-family:'League Spartan','Poppins',sans-serif;
+      text-align:center;line-height:1.1;
+      color:var(--text-primary);
+    }
+    .checklist ul{
+      list-style:none;
+      max-width:740px;margin:0 auto;
+      display:flex;flex-direction:column;gap:14px;
+    }
+    .checklist li{
+      padding:18px 22px;
+      display:flex;align-items:center;gap:16px;
+      font-size:17px;font-weight:600;
+      color:var(--text-primary);
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      border-radius:var(--radius-md);
+      transition:background .3s,border-color .3s,transform .3s;
+    }
+    .checklist li:hover{
+      background:var(--glass-bg-hover);
+      border-color:var(--glass-border-hover);
+      transform:translateX(6px);
+    }
+    .checklist img{width:24px;opacity:.85}
+    .checklist span{flex:1;text-align:left}
+    .checklist .subtitle{
+      margin:36px auto 0;
+      font-size:clamp(20px,3.5vw,34px);
+      font-weight:700;
+      font-family:'Gobold','League Spartan',sans-serif;
+      text-transform:uppercase;
+      text-align:center;line-height:1.25;
+      max-width:850px;letter-spacing:.4px;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+
+    /* ── Callout Section ───────────────────────────── */
+    .callout{
+      background:var(--bg-secondary);
+      padding:70px 24px 40px;
+      text-align:center;
+    }
+    .callout h2{
+      margin:0 auto 20px;max-width:820px;
+      font-size:clamp(28px,4.5vw,46px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      color:var(--text-primary);line-height:1.15;
+    }
+    .callout-subtitle{
+      margin:0 auto;
+      font-size:clamp(18px,2.5vw,24px);
+      font-weight:700;
+      font-family:'Montserrat',sans-serif;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+      display:inline-block;
+    }
+
+    /* ── Graph Section Recreated ───────────────────── */
+    .custom-graph-section {
+      background: var(--bg-secondary);
+      padding: 80px 24px 100px;
+      text-align: center;
+    }
+    .graph-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 48px auto 0;
+    }
+    .graph-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 24px;
+      text-align: left;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+      border-left: 4px solid var(--purple-mid);
+    }
+    .graph-card:hover {
+      transform: translateY(-6px);
+      background: var(--glass-bg-hover);
+    }
+    .graph-card:nth-child(1) { border-left-color: var(--cyan); }
+    .graph-card:nth-child(2) { border-left-color: var(--blue); }
+    .graph-card:nth-child(3) { border-left-color: var(--purple-mid); }
+    .graph-card:nth-child(4) { border-left-color: var(--purple); }
+    .graph-card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 87, 87, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ff5757;
+      border: 1px solid rgba(255, 87, 87, 0.15);
+      animation: alertPulse 2.8s ease-in-out infinite;
+    }
+    .graph-card:nth-child(2) .graph-card-icon{animation-delay:.4s}
+    .graph-card:nth-child(3) .graph-card-icon{animation-delay:.8s}
+    .graph-card:nth-child(4) .graph-card-icon{animation-delay:1.2s}
+    @keyframes alertPulse{
+      0%,100%{box-shadow:0 0 0 0 rgba(255,87,87,.25)}
+      50%{box-shadow:0 0 0 8px rgba(255,87,87,0)}
+    }
+    .graph-card-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    /* ── Divider ───────────────────────────────────── */
+    .divider{
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--purple),var(--cyan),transparent);
+    }
+
+    /* ── Intro Section ─────────────────────────────── */
+    .intro-section{
+      background:var(--bg-primary);
+      padding:80px 24px 70px;
+    }
+    .intro-wrap{max-width:1120px;margin:0 auto}
+    .intro-title{
+      display:flex;align-items:center;justify-content:center;
+      gap:18px;flex-wrap:wrap;
+    }
+    .intro-title h2{
+      margin:0;
+      font-size:clamp(26px,4vw,46px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .intro-title img{width:60px}
+    .intro-text{
+      margin:20px auto 36px;
+      font-size:clamp(16px,2vw,20px);
+      font-weight:400;
+      max-width:920px;
+      color:var(--text-secondary);
+      text-align:center;line-height:1.65;
+    }
+    .intro-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+    }
+    .feature-card {
+      border-radius: var(--radius-lg);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 20px;
+      min-height: 280px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.3);
+    }
+    .feature-card-icon-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-border);
+    }
+    .feature-card h3 {
+      margin: 0;
+      font-size: 21px;
+      font-family: 'League Spartan','Poppins',sans-serif;
+      color: #fff;
+    }
+    .feature-card p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .feature-tech {
+      border-color: rgba(84,212,225,.35);
+    }
+    .feature-tech:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 16px 48px rgba(84,212,225,.15);
+    }
+    .feature-ia {
+      border-color: rgba(88,168,231,.35);
+    }
+    .feature-ia:hover {
+      border-color: var(--blue);
+      box-shadow: 0 16px 48px rgba(88,168,231,.15);
+    }
+    .feature-specialist {
+      border-color: rgba(84,212,225,.35);
+    }
+    .feature-specialist:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 16px 48px rgba(84,212,225,.15);
+    }
+
+    /* ── Depoimentos ────────────────────────────────── */
+    .testimonials-section{
+      background:var(--bg-primary);
+      padding:60px 24px;
+    }
+    .testimonials-title{
+      text-align:center;
+      margin:0 0 32px;
+      font-size:clamp(24px,3.4vw,36px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.03em;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .testimonials-grid{
+      max-width:680px;margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+      justify-items:center;
+    }
+    .testimonial-card{
+      width:100%;
+      max-width:280px;
+      border-radius:var(--radius-lg);
+      padding:20px 18px;
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      display:flex;flex-direction:column;gap:14px;
+      transition:transform .35s,border-color .35s,box-shadow .35s;
+    }
+    .testimonial-card:hover{
+      transform:translateY(-6px);
+      border-color:var(--glass-border-hover);
+      box-shadow:0 16px 48px rgba(0,0,0,.3);
+    }
+    .testimonial-screenshot{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:var(--radius-md);
+      border:1px solid var(--glass-border);
+    }
+    .testimonial-author{
+      display:flex;align-items:center;gap:14px;
+      margin-top:auto;
+      padding-top:4px;
+    }
+    .testimonial-avatar{
+      width:48px;height:48px;flex-shrink:0;
+      border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--gradient-brand);
+      color:#fff;font-weight:800;font-size:15px;
+      font-family:'League Spartan',sans-serif;
+    }
+    .testimonial-author strong{
+      display:block;
+      color:var(--text-primary);
+      font-size:15px;font-weight:700;
+      font-family:'Montserrat',sans-serif;
+    }
+    .testimonial-author span{
+      display:block;
+      color:var(--text-muted);
+      font-size:13px;
+      margin-top:2px;
+    }
+    @media(max-width:600px){
+      .testimonials-section{padding:40px 18px}
+      .testimonial-card{padding:18px 16px}
+    }
+
+    /* ── Chat Demo Section ─────────────────────────── */
+    .chat-demo-section{
+      padding:80px 24px;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 50%,rgba(99,87,227,.08),transparent),
+        var(--bg-secondary);
+    }
+    .chat-demo-section h2{
+      text-align:center;margin:0 0 12px;
+      font-size:clamp(26px,4.5vw,44px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      color:var(--text-primary);
+    }
+    .chat-demo-section .section-sub{
+      text-align:center;margin:0 auto 48px;
+      font-size:clamp(15px,2vw,18px);
+      color:var(--text-secondary);max-width:600px;
+      line-height:1.55;
+    }
+    .chat-demo-layout{
+      display:flex;align-items:center;
+      gap:48px;max-width:1000px;margin:0 auto;
+    }
+    .chat-steps{
+      display:flex;flex-direction:column;gap:20px;
+      min-width:220px;
+    }
+    .chat-step{
+      padding:18px 22px;
+      border-radius:var(--radius-md);
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      transition:all .5s ease;
+    }
+    .chat-step.active{
+      background:rgba(99,87,227,.12);
+      border-color:var(--purple);
+      box-shadow:0 0 24px var(--glow-purple);
+    }
+    .chat-step .step-num{
+      font-size:12px;font-weight:800;
+      text-transform:uppercase;letter-spacing:.1em;
+      color:var(--text-muted);margin-bottom:4px;
+      transition:color .5s;
+    }
+    .chat-step.active .step-num{
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .chat-step .step-label{
+      font-size:16px;font-weight:700;
+      color:var(--text-secondary);
+      transition:color .5s;
+    }
+    .chat-step.active .step-label{color:var(--text-primary)}
+
+    .chat-window{
+      flex:1;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      background:rgba(10,10,20,.8);
+      border:1px solid var(--glass-border);
+      box-shadow:0 24px 64px rgba(0,0,0,.4),0 0 40px var(--glow-purple);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    }
+    .chat-header{
+      padding:14px 20px;
+      display:flex;align-items:center;gap:12px;
+      background:rgba(255,255,255,.03);
+      border-bottom:1px solid var(--glass-border);
+    }
+    .chat-avatar{
+      width:36px;height:36px;
+      border-radius:50%;
+      object-fit:cover;
+      border:2px solid var(--purple);
+    }
+    .chat-header-info{flex:1}
+    .chat-header-name{
+      font-size:14px;font-weight:700;
+      color:var(--text-primary);
+    }
+    .chat-header-status{
+      font-size:11px;color:var(--cyan);
+      display:flex;align-items:center;gap:5px;
+    }
+    .chat-header-status::before{
+      content:'';width:7px;height:7px;
+      border-radius:50%;background:#27c840;
+      animation:onlinePulse 2s infinite;
+    }
+    .chat-body{
+      padding:24px 20px;
+      min-height:300px;
+      display:flex;flex-direction:column;
+      gap:16px;
+    }
+    .chat-bubble{
+      max-width:80%;
+      padding:14px 18px;
+      border-radius:18px;
+      font-size:14px;line-height:1.55;
+      opacity:0;
+      transition:opacity .5s ease,transform .5s ease;
+    }
+    .chat-bubble.visible{
+      opacity:1;transform:translateX(0) !important;
+    }
+    .chat-bubble.user{
+      align-self:flex-end;
+      background:linear-gradient(135deg,var(--purple),#7b6fe8);
+      color:#fff;
+      border-bottom-right-radius:4px;
+      transform:translateX(30px);
+    }
+    .chat-bubble.bot{
+      align-self:flex-start;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--glass-border);
+      color:var(--text-primary);
+      border-bottom-left-radius:4px;
+      transform:translateX(-30px);
+    }
+    .chat-bubble.bot .success-icon{
+      display:inline-flex;align-items:center;gap:6px;
+      color:var(--cyan);font-weight:700;
+      margin-bottom:8px;font-size:15px;
+    }
+    .chat-bubble.bot .detail-line{
+      display:flex;align-items:center;gap:6px;
+      font-size:13px;color:var(--text-secondary);
+      margin-top:6px;
+    }
+    .typing-indicator{
+      align-self:flex-start;
+      display:flex;gap:5px;
+      padding:14px 22px;
+      border-radius:18px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--glass-border);
+      border-bottom-left-radius:4px;
+      opacity:0;
+      transition:opacity .35s ease;
+    }
+    .typing-indicator.visible{opacity:1}
+    .typing-indicator span{
+      width:8px;height:8px;
+      border-radius:50%;
+      background:var(--text-muted);
+      animation:typingBounce 1.2s ease-in-out infinite;
+    }
+    .typing-indicator span:nth-child(2){animation-delay:.15s}
+    .typing-indicator span:nth-child(3){animation-delay:.3s}
+
+    /* ── List Section (Timeline) ───────────────────── */
+    .list-section{
+      background:var(--bg-primary);
+      padding:60px 24px 80px;
+    }
+    .list-layer{
+      max-width:900px;margin:0 auto;
+      padding:48px 40px;
+      border-radius:var(--radius-xl);
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      position:relative;
+    }
+    .list-title{
+      margin:0 0 40px;
+      font-size:clamp(28px,4.5vw,40px);
+      font-family:'Gobold','League Spartan',sans-serif;
+      font-weight:700;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .list-layer ul{
+      list-style:none;
+      display:flex;flex-direction:column;gap:28px;
+      position:relative;
+      padding-left:20px;
+    }
+    .list-layer ul::before{
+      content:'';position:absolute;left:30px;top:10px;
+      width:2px;height:calc(100% - 20px);
+      background:linear-gradient(180deg,var(--purple),var(--cyan));
+      border-radius:2px;
+      opacity:.4;
+    }
+    .list-layer li{
+      display:flex;align-items:center;gap:22px;
+      font-size:clamp(16px,2vw,22px);
+      font-weight:700;
+      font-family:'Montserrat',sans-serif;
+      color:var(--text-primary);
+      position:relative;
+    }
+    .list-layer img{
+      width:52px;position:relative;z-index:1;
+    }
+
+    /* ── Response / Checkout Section ────────────────── */
+    .response-section{
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 30%,rgba(99,87,227,.1),transparent),
+        var(--bg-secondary);
+      color:#fff;
+      padding:80px 24px 90px;
+      text-align:center;
+    }
+    .response-title{
+      margin:0;
+      font-size:clamp(30px,5vw,42px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-weight:700;color:#fff;
+    }
+    .response-subtitle{
+      margin:8px 0 32px;
+      font-size:clamp(15px,2vw,18px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      color:var(--text-secondary);font-weight:400;
+    }
+    .response-list{
+      list-style:none;
+      display:flex;flex-direction:column;gap:16px;
+      max-width:760px;margin:0 auto 32px;
+    }
+    .response-list li{
+      display:flex;justify-content:space-between;align-items:center;
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(14px,2vw,18px);
+      font-weight:600;gap:16px;
+      padding:16px 22px;
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      border-radius:var(--radius-md);
+      text-align:left;
+      transition:background .3s,border-color .3s;
+    }
+    .response-list li:hover{
+      background:var(--glass-bg-hover);
+      border-color:var(--glass-border-hover);
+    }
+    .response-btn{
+      min-width:80px;padding:10px 16px;
+      border-radius:var(--radius-sm);
+      border:none;
+      font-family:'Montserrat',sans-serif;
+      font-weight:700;font-size:14px;
+      cursor:pointer;
+      transition:background .25s,color .25s,transform .15s;
+      flex-shrink:0;
+    }
+    .response-btn:hover{transform:scale(1.05)}
+    .response-btn[data-state="sim"]{
+      background:rgba(84,212,225,.2);
+      color:var(--cyan);
+      border:1px solid rgba(84,212,225,.3);
+    }
+    .response-btn[data-state="nao"]{
+      background:rgba(99,87,227,.3);
+      color:var(--purple-mid);
+      border:1px solid rgba(99,87,227,.4);
+    }
+    .response-note{
+      background:rgba(99,87,227,.15);
+      border:1px solid rgba(99,87,227,.3);
+      border-radius:var(--radius-pill);
+      padding:18px 30px;
+      max-width:700px;margin:0 auto 56px;
+    }
+    .response-note p{
+      margin:0;font-family:'Montserrat',sans-serif;
+      font-size:clamp(14px,2vw,17px);color:var(--text-secondary);
+    }
+
+    /* ── Platform Selector ─────────────────────────── */
+    .checkout-area{
+      max-width:600px;margin:0 auto;
+    }
+    .checkout-area .checkout-label{
+      font-size:clamp(16px,2.2vw,20px);
+      font-weight:700;font-family:'League Spartan',sans-serif;
+      color:var(--text-primary);
+      margin-bottom:20px;
+    }
+    .platform-selector{
+      display:flex;gap:16px;
+      justify-content:center;
+      margin-bottom:32px;
+    }
+    .platform-option{cursor:pointer;flex:1;max-width:220px}
+    .platform-option input{
+      position:absolute;opacity:0;pointer-events:none;
+    }
+    .platform-card{
+      display:flex;flex-direction:column;
+      align-items:center;gap:10px;
+      padding:24px 20px;
+      border-radius:var(--radius-md);
+      background:var(--glass-bg);
+      border:2px solid var(--glass-border);
+      transition:all .35s ease;
+    }
+    .platform-card:hover{
+      background:var(--glass-bg-hover);
+      border-color:var(--glass-border-hover);
+    }
+    .platform-option input:checked + .platform-card{
+      border-color:var(--cyan);
+      background:rgba(84,212,225,.08);
+      box-shadow:0 0 28px rgba(84,212,225,.2),inset 0 0 20px rgba(84,212,225,.04);
+    }
+    .platform-card svg{width:40px;height:40px}
+    .platform-card .platform-name{
+      font-size:16px;font-weight:700;
+      color:var(--text-primary);
+    }
+    .platform-card .platform-check{
+      width:22px;height:22px;
+      border-radius:50%;
+      border:2px solid var(--glass-border);
+      display:flex;align-items:center;justify-content:center;
+      transition:all .3s;
+    }
+    .platform-option input:checked + .platform-card .platform-check{
+      border-color:var(--cyan);background:var(--cyan);
+    }
+    .platform-option input:checked + .platform-card .platform-check::after{
+      content:'✓';font-size:13px;color:#0a0a14;font-weight:800;
+    }
+
+    /* ── CTA Checkout Button ──────────────────────── */
+    .cta-checkout{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;
+      width:100%;max-width:480px;
+      padding:22px 40px;
+      border:none;border-radius:var(--radius-pill);
+      font-size:clamp(17px,2.5vw,22px);
+      font-weight:800;
+      font-family:'League Spartan','Poppins',sans-serif;
+      letter-spacing:.01em;
+      color:#fff;
+      background:var(--gradient-cta);
+      background-size:200% 200%;
+      animation:ctaPulse 3s ease-in-out infinite,gradientShift 4s ease infinite;
+      cursor:pointer;
+      transition:transform .2s;
+      position:relative;
+      overflow:hidden;
+    }
+    .cta-checkout:hover{
+      transform:translateY(-3px) scale(1.02);
+    }
+    .cta-checkout:disabled{
+      cursor:not-allowed;opacity:.7;
+      animation:none;
+    }
+    .cta-checkout .spinner{
+      display:none;
+      width:22px;height:22px;
+      border:3px solid rgba(255,255,255,.3);
+      border-top-color:#fff;
+      border-radius:50%;
+      animation:spin .7s linear infinite;
+    }
+    .cta-checkout.loading .spinner{display:block}
+    .cta-checkout.loading .cta-label{display:none}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .checkout-caption{
+      margin:0 0 16px;
+      font-size:14px;
+      color:var(--text-secondary);
+      text-align:center;
+    }
+    .checkout-caption strong{color:var(--text-primary)}
+
+    .skip-trial-link{
+      display:inline-flex;align-items:center;justify-content:center;
+      margin-top:12px;
+      border:none;background:none;
+      color:var(--text-muted);
+      font-size:13px;font-weight:600;
+      font-family:'Montserrat',sans-serif;
+      text-decoration:underline;text-underline-offset:3px;
+      cursor:pointer;
+      transition:color .2s;
+    }
+    .skip-trial-link:hover{color:var(--text-secondary)}
+    .skip-trial-link:disabled{cursor:not-allowed;opacity:.6}
+
+    .checkout-secure{
+      margin-top:16px;
+      font-size:13px;
+      color:var(--text-muted);
+      display:flex;align-items:center;justify-content:center;gap:6px;
+    }
+    .checkout-secure svg{width:14px;height:14px;fill:var(--text-muted)}
+
+    /* ── Offer Section ─────────────────────────────── */
+    .offer-section{
+      position:relative;overflow:hidden;
+      background:var(--bg-primary);
+      padding:80px 24px 20px;
+    }
+    .offer-section::before{
+      content:'';position:absolute;
+      width:420px;height:420px;
+      background:radial-gradient(circle,rgba(99,87,227,.12),transparent 70%);
+      border-radius:50%;
+      top:-160px;left:50%;transform:translateX(-50%);
+      animation:float 16s ease-in-out infinite;
+      pointer-events:none;
+    }
+    .offer-section .wrap{position:relative;z-index:1}
+    .offer-title{
+      margin:0 0 36px;
+      font-size:clamp(30px,4.5vw,44px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-weight:700;
+      color:var(--text-primary);text-align:center;
+    }
+    .offer-grid{
+      display:flex;gap:24px;justify-content:center;
+      margin-bottom:40px;flex-wrap:wrap;
+    }
+    .offer-card{
+      border-radius:var(--radius-lg);
+      padding:32px;min-width:280px;max-width:360px;
+      background:var(--glass-bg);
+      border:1px solid var(--glass-border);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      transition:transform .3s,box-shadow .3s;
+    }
+    .offer-card:hover{transform:translateY(-4px)}
+    .offer-card--green{
+      border-color:rgba(39,200,64,.3);
+    }
+    .offer-card--green:hover{
+      box-shadow:0 12px 40px rgba(39,200,64,.12);
+    }
+    .offer-card--red{
+      border-color:rgba(255,87,87,.3);
+    }
+    .offer-card--red:hover{
+      box-shadow:0 12px 40px rgba(255,87,87,.1);
+    }
+    .offer-card ul{
+      list-style:none;
+      display:flex;flex-direction:column;gap:18px;
+      font-family:'Montserrat',sans-serif;
+      font-weight:700;font-size:16px;
+      color:var(--text-primary);text-align:left;
+    }
+    .offer-card li{
+      display:flex;align-items:center;gap:14px;
+    }
+    .offer-card li img{width:28px}
+    .offer-subtitle{
+      margin:0 0 28px;
+      font-size:clamp(24px,4vw,38px);
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-weight:700;text-align:center;
+      color:var(--text-primary);
+    }
+    .offer-cta{
+      border:none;border-radius:var(--radius-pill);
+      padding:20px 70px;
+      font-size:clamp(36px,6vw,56px);
+      font-weight:700;
+      font-family:'League Spartan','Poppins',sans-serif;
+      color:#fff;
+      background:var(--gradient-cta);
+      cursor:pointer;display:block;margin:0 auto;
+      box-shadow:0 12px 40px var(--glow-purple);
+      transition:transform .2s,box-shadow .2s;
+    }
+    .offer-cta:hover{
+      transform:translateY(-3px);
+      box-shadow:0 18px 50px var(--glow-purple),0 0 60px var(--glow-cyan);
+    }
+    .offer-note{
+      margin-top:16px;
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(16px,2vw,20px);
+      text-align:center;
+      color:var(--text-secondary);
+    }
+
+    /* ── Dark Section (Final CTA) ──────────────────── */
+    .dark-section{
+      position:relative;
+      padding:120px 24px 100px;
+      overflow:hidden;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 100%,rgba(99,87,227,.25),transparent),
+        radial-gradient(ellipse 60% 50% at 20% 80%,rgba(84,212,225,.12),transparent),
+        linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-deepest) 100%);
+    }
+    .dark-section::before{
+      content:'';position:absolute;
+      inset:0;
+      background:url('assets/texture-down-top.webp') center/cover no-repeat;
+      opacity:.06;pointer-events:none;
+    }
+    .dark-content{
+      max-width:800px;margin:0 auto;
+      text-align:center;position:relative;z-index:1;
+    }
+    .dark-mascot-wrap{
+      position:relative;
+      width:110px;height:110px;
+      margin:0 auto 8px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .dark-mascot-glow{
+      position:absolute;inset:0;
+      background:radial-gradient(circle,var(--glow-cyan),transparent 70%);
+      border-radius:50%;
+      animation:mascotGlowPulse 4s ease-in-out infinite;
+    }
+    .dark-mascot-wrap img{
+      position:relative;
+      width:88px;
+      filter:drop-shadow(0 10px 18px rgba(0,0,0,.4));
+      animation:darkMascotFloat 5s ease-in-out infinite;
+    }
+    @keyframes darkMascotFloat{
+      0%,100%{transform:translateY(0) rotate(-2deg)}
+      50%{transform:translateY(-8px) rotate(2deg)}
+    }
+    .dark-title{
+      margin:0 0 20px;
+      font-size:clamp(32px,5vw,50px);
+      font-family:'Gobold','League Spartan',sans-serif;
+      letter-spacing:.08em;
+      background:var(--gradient-brand);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .dark-subtitle{
+      margin:0 0 36px;
+      font-size:clamp(16px,2.2vw,20px);
+      font-family:'Montserrat',sans-serif;
+      color:var(--text-secondary);
+      line-height:1.6;
+    }
+    .dark-btn{
+      padding:18px 52px;
+      border-radius:var(--radius-pill);
+      border:none;
+      background:var(--gradient-cta);
+      color:#fff;
+      font-size:clamp(16px,2vw,20px);
+      font-weight:800;
+      font-family:'Montserrat',sans-serif;
+      cursor:pointer;
+      box-shadow:0 8px 32px var(--glow-purple);
+      transition:transform .2s,box-shadow .2s;
+      animation:ctaPulse 3s ease-in-out infinite;
+    }
+    .dark-btn:hover{
+      transform:translateY(-3px);
+    }
+
+    /* ── Responsive ────────────────────────────────── */
+    @media (max-width:960px){
+      .chat-demo-layout{
+        flex-direction:column;gap:28px;
+      }
+      .chat-steps{
+        flex-direction:row;min-width:0;
+        justify-content:center;
+      }
+      .chat-step{padding:14px 18px;flex:1;max-width:180px}
+    }
+
+    @media (max-width:720px){
+      .hero{min-height:70vh;padding:80px 0 60px}
+      .hero-card{padding:0 18px}
+
+      .checklist{padding:50px 18px 40px}
+      .checklist li{padding:14px 16px;font-size:15px}
+
+      .callout{padding:48px 18px 32px}
+
+      .intro-section{padding:50px 18px}
+      .intro-grid{grid-template-columns:1fr}
+      .feature-card{min-height:auto;padding:24px}
+
+      .chat-demo-section{padding:50px 18px}
+      .chat-steps{gap:10px}
+      .chat-step{padding:10px 14px}
+      .chat-step .step-label{font-size:13px}
+      .chat-body{padding:18px 14px;min-height:250px}
+      .chat-bubble{max-width:88%;font-size:13px;padding:12px 14px}
+
+      .list-section{padding:40px 18px 60px}
+      .list-layer{padding:32px 24px}
+      .list-layer li{font-size:17px;gap:16px}
+      .list-layer img{width:42px}
+      .list-layer ul{padding-left:10px}
+      .list-layer ul::before{left:22px}
+
+      .response-section{padding:50px 18px 60px}
+      .response-list li{padding:14px 16px}
+      .platform-selector{flex-direction:column;align-items:center}
+      .platform-option{max-width:100%;width:100%}
+      .platform-card{flex-direction:row;padding:18px 22px}
+
+      .offer-section{padding:50px 18px 10px}
+      .offer-grid{flex-direction:column;align-items:center}
+      .offer-card{min-width:0;width:100%}
+      .offer-cta{padding:16px 40px}
+
+      .dark-section{padding:80px 18px 60px}
+    }
+
+    @media (max-width:540px){
+      .lead-modal{padding:14px}
+      .lead-form{padding:24px 20px;border-radius:var(--radius-md)}
+      .lead-form h2{font-size:28px}
+
+      .btn{padding:16px 32px}
+
+      .hero::before,.hero::after{
+        width:250px;height:250px;
+      }
+
+      .chat-steps{flex-wrap:wrap}
+
+      .response-list li{flex-direction:column;text-align:center;gap:10px}
+      .response-btn{width:100%}
+
+      .offer-cta{font-size:32px;padding:14px 28px}
+    }
+    </style>
+  </head>
+
+  <body>
+    <!-- ═══ Lead Capture Modal ═══ -->
+    <div class="lead-modal" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle" hidden>
+      <form class="lead-form" id="leadForm">
+        <h2 id="leadTitle">Vamos começar!</h2>
+        <p>Preencha seus dados para liberar seus <strong>15 dias grátis</strong> no Ricco.</p>
+        <div class="lead-fields">
+          <div class="lead-field">
+            <label for="leadNome">Nome</label>
+            <input id="leadNome" name="nome" type="text" autocomplete="name" placeholder="Seu nome completo" required />
+          </div>
+          <div class="lead-field">
+            <label for="leadEmail">Email</label>
+            <input id="leadEmail" name="email" type="email" autocomplete="email" placeholder="seu@email.com" required />
+          </div>
+          <div class="lead-field">
+            <label for="leadWhatsapp">WhatsApp</label>
+            <input id="leadWhatsapp" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel" placeholder="11995695094" pattern="[0-9]{10,11}" maxlength="11" title="DDD + número, só dígitos. Ex: 11995695094" required />
+          </div>
+          <div class="lead-field">
+            <label for="leadEmpresa">Empresa</label>
+            <input id="leadEmpresa" name="empresa" type="text" autocomplete="organization" placeholder="Nome da sua empresa" required />
+          </div>
+          <div class="lead-field">
+            <label for="leadFaturamento">Margem de faturamento</label>
+            <select id="leadFaturamento" name="faturamento" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Até 30 mil">Até 30 mil</option>
+              <option value="De 30 mil a 150 mil">De 30 mil a 150 mil</option>
+              <option value="De 150 mil a 500 mil">De 150 mil a 500 mil</option>
+              <option value="Mais que 500 mil">Mais que 500 mil</option>
+            </select>
+          </div>
+        </div>
+        <button class="lead-submit" type="submit">Liberar meus 15 dias grátis</button>
+        <p class="lead-feedback" id="leadFeedback" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <!-- ═══ Demo Popup ═══ -->
+    <div class="demo-popup" id="demoPopup" role="dialog" aria-labelledby="demoPopupTitle">
+      <button class="demo-popup-close" id="demoPopupClose" type="button" aria-label="Fechar">✕</button>
+      <div class="demo-popup-head">
+        <img src="assets/rico.webp" alt="" />
+        <strong id="demoPopupTitle">Quer ver o Ricco em ação?</strong>
+      </div>
+      <p>Dá uma olhada rápida no dashboard antes de decidir. Sem compromisso.</p>
+      <div class="demo-popup-actions">
+        <a class="demo-popup-cta" id="demoPopupCta" href="https://app.caixalucrativo.com.br/login?ref=demo" target="_blank" rel="noopener noreferrer">Ver demonstração</a>
+        <button class="demo-popup-dismiss" id="demoPopupDismiss" type="button">Agora não</button>
+      </div>
+    </div>
+
+    <!-- ═══ Header Navbar ═══ -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="#" class="navbar-logo">
+          <img src="assets/rico.webp" alt="Ricco Logo" class="logo-img-white" />
+          <div class="logo-text">
+            <span class="logo-sub">ASSISTENTE</span>
+            <span class="logo-main">CAIXA LUCRATIVO</span>
+          </div>
+        </a>
+        <button class="navbar-toggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="navbar-menu">
+          <li><a href="#">Início</a></li>
+          <li><a href="#chatDemo">Como funciona</a></li>
+          <li><a href="#precos">Preços</a></li>
+          <li><a href="https://app.caixalucrativo.com.br" target="_blank" rel="noopener noreferrer">Sistema ↗</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ═══ Hero ═══ -->
+    <header class="hero">
+      <div class="wrap">
+        <div class="hero-container reveal">
+          <div class="hero-content">
+            <span class="hero-overline uppercase">Sem planilha complicada. Sem decidir no escuro.</span>
+            <h1 class="hero-title">
+              <span>ENTENDA QUANTO</span>
+              <span class="highlight">SUA EMPRESA</span>
+              <span>REALMENTE LUCRA.</span>
+            </h1>
+            <p class="hero-desc">
+              Envie suas movimentações pelo WhatsApp ou Telegram. O Ricco organiza tudo em um dashboard claro, para você transformar números em decisões melhores.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#responda">Descobrir se estou no controle</a>
+              <a class="btn-secondary" href="#chatDemo">Como funciona</a>
+            </div>
+          </div>
+          <div class="hero-visual reveal reveal-delay-2" style="cursor: pointer;" role="button" tabindex="0" onclick="document.getElementById('chatDemo').scrollIntoView({behavior:'smooth'})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('chatDemo').scrollIntoView({behavior:'smooth'})}">
+            <div class="hero-devices">
+              <img class="hero-device-laptop" src="assets/hero-laptop.png" alt="Dashboard do Ricco mostrando faturamento e histórico financeiro" loading="eager" />
+              <img class="hero-device-phone" src="assets/hero-phone.png" alt="Conversa no WhatsApp com o Ricco registrando um gasto e consultando o faturamento" loading="eager" />
+            </div>
+            <div class="hero-demo-cta">
+              <button class="hero-play-btn" aria-label="Ver demonstração" tabindex="-1">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </button>
+              <span>Ver como funciona</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ Checklist ═══ -->
+    <section class="checklist">
+      <div class="wrap reveal">
+        <h2>Veja se isso acontece com você</h2>
+        <ul>
+          <li class="reveal reveal-delay-1"><img src="assets/arrow1.webp" alt="" aria-hidden="true" /><span>O dinheiro entra, mas nunca sobra</span></li>
+          <li class="reveal reveal-delay-1"><img src="assets/arrow1.webp" alt="" aria-hidden="true" /><span>Você olha o saldo bancário, mas não sabe se é lucro</span></li>
+          <li class="reveal reveal-delay-2"><img src="assets/arrow1.webp" alt="" aria-hidden="true" /><span>Decide preço, investimento ou retirada no achismo</span></li>
+          <li class="reveal reveal-delay-2"><img src="assets/arrow1.webp" alt="" aria-hidden="true" /><span>Mistura contas pessoais e da empresa sem perceber</span></li>
+          <li class="reveal reveal-delay-3"><img src="assets/arrow1.webp" alt="" aria-hidden="true" /><span>Só olha o financeiro quando dá problema</span></li>
+        </ul>
+        <p class="subtitle reveal">Isso não é falta de esforço. É falta de clareza financeira contínua.</p>
+      </div>
+    </section>
+
+    <!-- ═══ Callout ═══ -->
+    <section class="callout">
+      <div class="wrap reveal">
+        <h2>O problema é que a desorganização financeira é silenciosa</h2>
+        <p class="callout-subtitle">Enquanto tudo parece "ok", você pode estar:</p>
+      </div>
+    </section>
+
+    <!-- ═══ Graph Recreated ═══ -->
+    <section class="custom-graph-section" aria-label="Aviso de desorganização financeira">
+      <div class="wrap">
+        <div class="graph-grid reveal">
+          <!-- Card 1 -->
+          <div class="graph-card reveal reveal-delay-1">
+            <div class="graph-card-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+            </div>
+            <div class="graph-card-text">
+              Tomando decisões erradas achando que está acertando
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="graph-card reveal reveal-delay-2">
+            <div class="graph-card-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+            </div>
+            <div class="graph-card-text">
+              Trabalhando muito para ganhar menos
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="graph-card reveal reveal-delay-2">
+            <div class="graph-card-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+            </div>
+            <div class="graph-card-text">
+              Crescendo de forma desorganizada
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="graph-card reveal reveal-delay-3">
+            <div class="graph-card-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+            </div>
+            <div class="graph-card-text">
+              Perdendo margem sem perceber
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Divider ═══ -->
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══ Intro: Como o Ricco resolve o seu financeiro na prática ═══ -->
+    <section class="intro-section">
+      <div class="wrap intro-wrap">
+        <div class="intro-title reveal">
+          <img src="assets/rico.webp" alt="Ricco Logo" class="logo-img-white" style="width: 52px; height: 52px;" />
+          <h2>Como o Ricco resolve o seu financeiro na prática</h2>
+        </div>
+        <div class="intro-grid">
+          <!-- Bloco 1 -->
+          <article class="feature-card feature-tech reveal reveal-delay-1">
+            <div class="feature-card-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="var(--cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3>1. Setup sem burocracia</h3>
+            <p>Ao assinar, crie seus acessos e seu plano de contas personalizado com o Ricco.</p>
+          </article>
+          <!-- Bloco 2 -->
+          <article class="feature-card feature-ia reveal reveal-delay-2">
+            <div class="feature-card-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>2. Você delega, o Ricco executa</h3>
+            <p>Tudo acontece direto no seu <strong>WhatsApp ou Telegram</strong>. Basta encaminhar áudios, fotos de notas fiscais, boletos ou extratos. O trabalho braçal de digitar e categorizar fica 100% com o Ricco.</p>
+          </article>
+          <!-- Bloco 3 -->
+          <article class="feature-card feature-specialist reveal reveal-delay-3">
+            <div class="feature-card-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="var(--cyan)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+              </svg>
+            </div>
+            <h3>3. Visão de dono/a de negócio</h3>
+            <p>Chega de adivinhar onde está o dinheiro. Saiba por onde o dinheiro entra e sai com dashboards, DRE, relatórios mensais e muito mais. Clareza total para você tomar decisões rápidas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Chat Demo Interativa ═══ -->
+    <section class="chat-demo-section" id="chatDemo">
+      <div class="wrap">
+        <h2 class="reveal">Veja o Agente Ricco em ação</h2>
+        <p class="section-sub reveal">Lançar suas finanças nunca foi tão simples. Veja como funciona em 3 passos:</p>
+        <div class="chat-demo-layout reveal">
+          <!-- Steps -->
+          <div class="chat-steps">
+            <div class="chat-step" id="step1">
+              <div class="step-num">Passo 01</div>
+              <div class="step-label">🚀 Lança</div>
+            </div>
+            <div class="chat-step" id="step2">
+              <div class="step-num">Passo 02</div>
+              <div class="step-label">🔍 Analisa</div>
+            </div>
+            <div class="chat-step" id="step3">
+              <div class="step-num">Passo 03</div>
+              <div class="step-label">✅ Entrega</div>
+            </div>
+          </div>
+          <!-- Chat Window -->
+          <div class="chat-window">
+            <div class="chat-header">
+              <img class="chat-avatar" src="assets/rico.webp" alt="Ricco" />
+              <div class="chat-header-info">
+                <div class="chat-header-name">Agente Ricco</div>
+                <div class="chat-header-status">Online</div>
+              </div>
+            </div>
+            <div class="chat-body" id="chatBody">
+              <div class="chat-bubble user" id="userMsg">
+                Vendi R$ 800,00 em serviços hoje 💰
+              </div>
+              <div class="typing-indicator" id="typingDots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="chat-bubble bot" id="botMsg">
+                <div class="success-icon">✅ Lançamento consolidado com sucesso!</div>
+                <div>Sua receita de <strong>R$&nbsp;800,00</strong> foi registrada e consolidada dentro do sistema.</div>
+                <div class="detail-line">📁 Categoria: <strong>Serviços</strong></div>
+                <div class="detail-line">📈 Faturamento mensal atualizado: <strong>R$&nbsp;4.250,00</strong></div>
+                <div class="detail-line">📊 Margem de lucro estimada: <strong>32%</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Como funciona na prática ═══ -->
+    <section class="list-section">
+      <div class="list-layer reveal">
+        <h2 class="list-title">Como funciona na prática?</h2>
+        <ul>
+          <li class="reveal reveal-delay-1"><img src="assets/number1.webp" alt="1" /><span>Lançamentos pelo Telegram</span></li>
+          <li class="reveal reveal-delay-1"><img src="assets/number2.webp" alt="2" /><span>Organização automática dos dados</span></li>
+          <li class="reveal reveal-delay-2"><img src="assets/number3.webp" alt="3" /><span>DRE mensal claro e estruturado</span></li>
+          <li class="reveal reveal-delay-2"><img src="assets/number4.webp" alt="4" /><span>Dashboard com indicadores</span></li>
+          <li class="reveal reveal-delay-3"><img src="assets/number5.webp" alt="5" /><span>IA com alertas e boas práticas</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══ Depoimentos ═══ -->
+    <section class="testimonials-section">
+      <div class="wrap">
+        <h2 class="testimonials-title reveal">Quem já usa, recomenda</h2>
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal reveal-delay-1">
+            <img class="testimonial-screenshot" src="assets/depoimento-christiane.png" alt="Print de conversa no WhatsApp com o depoimento de Christiane Ribeiro sobre o Ricco" loading="lazy" />
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">CR</div>
+              <div>
+                <strong>Christiane Ribeiro</strong>
+                <span>Kryda Artes e Personalização</span>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial-card reveal reveal-delay-2">
+            <img class="testimonial-screenshot" src="assets/depoimento-vanessa.png" alt="Print de conversa no WhatsApp com o depoimento de Vanessa Bogada sobre o Ricco" loading="lazy" />
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" aria-hidden="true">VB</div>
+              <div>
+                <strong>Vanessa Bogada</strong>
+                <span>Chef Vanessa</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Responda + Checkout ═══ -->
+    <section id="responda" class="response-section">
+      <div class="wrap">
+        <h2 class="response-title reveal">Responda com click</h2>
+        <p class="response-subtitle reveal">(mas seja sincero viu?)</p>
+        <ul class="response-list reveal">
+          <li>
+            <span>Sei exatamente quanto foi meu lucro no último mês</span>
+            <button class="response-btn" data-state="nao">NÃO</button>
+          </li>
+          <li>
+            <span>Sei qual é o maior custo do meu negócio</span>
+            <button class="response-btn" data-state="nao">NÃO</button>
+          </li>
+          <li>
+            <span>Consigo decidir com base em números</span>
+            <button class="response-btn" data-state="nao">NÃO</button>
+          </li>
+          <li>
+            <span>Sei quanto posso retirar da empresa</span>
+            <button class="response-btn" data-state="nao">NÃO</button>
+          </li>
+        </ul>
+        <div class="response-note reveal">
+          <p>Se você respondeu "não" para 2 ou mais, esse produto é para você.</p>
+        </div>
+
+        <!-- CTA Redirect to Checkout below -->
+        <div class="reveal" style="margin-top: 40px;">
+          <button class="btn" onclick="document.getElementById('checkoutArea').scrollIntoView({behavior:'smooth'})">Quero organizar minhas finanças</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ Oferta ═══ -->
+    <section class="offer-section" id="precos">
+      <div class="wrap">
+        <h2 class="offer-title reveal">É para você se:</h2>
+        <div class="offer-grid">
+          <article class="offer-card offer-card--green reveal reveal-delay-1">
+            <ul>
+              <li><img src="assets/check.webp" alt="" /><span>É MEI ou microempresa ativa</span></li>
+              <li><img src="assets/check.webp" alt="" /><span>Tem faturamento recorrente</span></li>
+              <li><img src="assets/check.webp" alt="" /><span>Quer clareza sem complicação</span></li>
+            </ul>
+          </article>
+          <article class="offer-card offer-card--red reveal reveal-delay-2">
+            <ul>
+              <li><img src="assets/cross.webp" alt="" /><span>Quer terceirizar tudo</span></li>
+              <li><img src="assets/cross.webp" alt="" /><span>Não quer registrar movimentações</span></li>
+              <li><img src="assets/cross.webp" alt="" /><span>Busca consultoria avançada</span></li>
+            </ul>
+          </article>
+        </div>
+        <h3 class="offer-subtitle reveal">Tudo isso com um investimento acessível</h3>
+        <button class="offer-cta reveal">R$ 197 / mês</button>
+        <p class="offer-note reveal">Menos que o custo de uma decisão errada.</p>
+      </div>
+    </section>
+
+    <!-- ═══ Final CTA ═══ -->
+    <section class="dark-section">
+      <div class="wrap">
+        <div class="dark-content reveal">
+          <div class="dark-mascot-wrap" aria-hidden="true">
+            <div class="dark-mascot-glow"></div>
+            <img src="assets/rico.webp" alt="" loading="lazy" />
+          </div>
+          <h2 class="dark-title">PARE DE DECIDIR NO ESCURO.</h2>
+          <p class="dark-subtitle">
+            Comece agora a enxergar seu negócio com clareza financeira
+          </p>
+          
+          <!-- Checkout: Seletor de plataforma + CTA (Moved here) -->
+          <div class="checkout-area reveal" id="checkoutArea" style="margin-top: 40px;">
+            <p class="checkout-label">Onde você prefere acessar o Ricco?</p>
+            <div class="platform-selector">
+              <label class="platform-option" id="optionWhatsapp">
+                <input type="radio" name="platform" value="whatsapp" checked />
+                <div class="platform-card">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#25D366"/>
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.104-1.136l-.296-.176-2.832.84.84-2.832-.176-.296A7.963 7.963 0 014 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z" fill="#25D366"/>
+                  </svg>
+                  <span class="platform-name">WhatsApp</span>
+                  <span class="platform-check"></span>
+                </div>
+              </label>
+              <label class="platform-option" id="optionTelegram">
+                <input type="radio" name="platform" value="telegram" />
+                <div class="platform-card">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.28-.02-.12.03-2.02 1.28-5.69 3.77-.54.37-1.03.55-1.47.54-.48-.01-1.41-.27-2.1-.5-.85-.28-1.52-.43-1.46-.91.03-.25.38-.51 1.05-.78 4.12-1.79 6.87-2.97 8.26-3.54 3.93-1.62 4.75-1.9 5.28-1.91.12 0 .37.03.54.17.14.12.18.28.2.47-.01.06.01.24 0 .37z" fill="#29B6F6"/>
+                  </svg>
+                  <span class="platform-name">Telegram</span>
+                  <span class="platform-check"></span>
+                </div>
+              </label>
+            </div>
+            <p class="checkout-caption">Preencha seus dados e comece agora — <strong>15 dias grátis</strong>, sem compromisso.</p>
+            <button class="cta-checkout" id="ctaCheckout" type="button">
+              <span class="cta-label">Começar meus 15 dias grátis</span>
+              <span class="spinner"></span>
+            </button>
+            <button class="skip-trial-link" id="ctaSkipTrial" type="button">
+              ou prosseguir direto para checkout sem teste grátis
+            </button>
+            <div class="checkout-secure">
+              <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM12 17c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3-9H9V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2z"/></svg>
+              Pagamento seguro via Asaas
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ JavaScript ═══ -->
+    <script>
+      /* ── Constants ─────────────────────────────────── */
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/a/macros/level5group.com.br/s/AKfycbxVTnkgqhxYWC-ZfPIXXKkQ59KKJWli2gaflC3MT206Tnn2Wr9D_MYCsIlwBeYxzEWV-A/exec';
+      const N8N_WEBHOOK_URL  = 'https://n8nricco.caixalucrativo.com.br/webhook/c0b75b34-138b-40e7-8c31-3bc7bcefac85';
+
+      // Código fixo de referência para réplicas deste site (ex: domínio de uma
+      // embaixadora). Deixe vazio '' no site principal. Numa réplica, defina o
+      // código dela aqui (ex: 'christiane-kryda') para que todo lead/checkout
+      // feito por esse domínio já venha automaticamente atribuído a ela, mesmo
+      // sem um parâmetro ?ref= na URL. Um ?ref= na URL, se presente, tem prioridade.
+      const AMBASSADOR_REF = '';
+
+      /* ── Lead Modal (Capture + localStorage) ───────── */
+      const leadModal    = document.getElementById('leadModal');
+      const leadForm     = document.getElementById('leadForm');
+      const leadFeedback = document.getElementById('leadFeedback');
+      const leadSubmit   = leadForm.querySelector('.lead-submit');
+
+      // Keep WhatsApp field digits-only (DDD + número, sem parênteses/traço)
+      const leadWhatsappInput = document.getElementById('leadWhatsapp');
+      leadWhatsappInput.addEventListener('input', () => {
+        leadWhatsappInput.value = leadWhatsappInput.value.replace(/\D/g, '').slice(0, 11);
+      });
+
+      // Pre-fill modal fields if they exist in localStorage
+      const savedNome = localStorage.getItem('ricco_nome');
+      const savedEmail = localStorage.getItem('ricco_email');
+      const savedWhatsapp = localStorage.getItem('ricco_whatsapp');
+
+      if (savedNome) document.getElementById('leadNome').value = savedNome;
+      if (savedEmail) document.getElementById('leadEmail').value = savedEmail;
+      if (savedWhatsapp) document.getElementById('leadWhatsapp').value = savedWhatsapp;
+
+      // Se o clique no CTA abriu o modal por falta de dados, retoma o checkout
+      // automaticamente assim que o formulário for enviado com sucesso.
+      let pendingCheckout = null; // { button, testeGratis } | null
+
+      leadForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        leadFeedback.textContent = '';
+
+        const formData = new FormData(leadForm);
+        const payload  = Object.fromEntries(formData.entries());
+        payload.origem = 'LP Caixa Lucrativo';
+        payload.ref    = new URLSearchParams(window.location.search).get('ref') || AMBASSADOR_REF || '';
+
+        // Save lead data to localStorage for checkout flow
+        localStorage.setItem('ricco_nome',     payload.nome     || '');
+        localStorage.setItem('ricco_email',    payload.email    || '');
+        localStorage.setItem('ricco_whatsapp', payload.whatsapp || '');
+
+        leadSubmit.disabled    = true;
+        leadSubmit.textContent = 'Enviando...';
+
+        try {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method : 'POST',
+            mode   : 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body   : JSON.stringify(payload)
+          });
+          leadModal.hidden = true;
+          leadForm.reset();
+
+          if (pendingCheckout) {
+            const { button, testeGratis } = pendingCheckout;
+            pendingCheckout = null;
+            iniciarCheckout(button, testeGratis);
+          }
+        } catch (err) {
+          leadFeedback.textContent = 'Não foi possível enviar agora. Tente novamente.';
+        } finally {
+          leadSubmit.disabled    = false;
+          leadSubmit.textContent = 'Liberar meus 15 dias grátis';
+        }
+      });
+
+      /* ── Demo Popup ─────────────────────────────────── */
+      const demoPopup        = document.getElementById('demoPopup');
+      const demoPopupClose   = document.getElementById('demoPopupClose');
+      const demoPopupDismiss = document.getElementById('demoPopupDismiss');
+      const demoPopupCta     = document.getElementById('demoPopupCta');
+
+      function hideDemoPopup() {
+        demoPopup.classList.remove('visible');
+        sessionStorage.setItem('ricco_demo_popup_seen', '1');
+      }
+
+      demoPopupClose.addEventListener('click', hideDemoPopup);
+      demoPopupDismiss.addEventListener('click', hideDemoPopup);
+      demoPopupCta.addEventListener('click', hideDemoPopup);
+
+      if (!sessionStorage.getItem('ricco_demo_popup_seen')) {
+        setTimeout(() => {
+          // Don't interrupt the lead capture flow
+          if (!leadModal.hidden) return;
+          demoPopup.classList.add('visible');
+        }, 8000);
+      }
+
+      /* ── Scroll Reveal (Intersection Observer) ──────── */
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      /* ── Chat Demo Animation ────────────────────────── */
+      let chatPlayed = false;
+      const chatObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !chatPlayed) {
+            chatPlayed = true;
+            playChatDemo();
+            chatObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const chatSection = document.getElementById('chatDemo');
+      if (chatSection) chatObserver.observe(chatSection);
+
+      function playChatDemo() {
+        const step1   = document.getElementById('step1');
+        const step2   = document.getElementById('step2');
+        const step3   = document.getElementById('step3');
+        const userMsg = document.getElementById('userMsg');
+        const typing  = document.getElementById('typingDots');
+        const botMsg  = document.getElementById('botMsg');
+
+        // Step 1: Lança (user sends message)
+        setTimeout(() => {
+          step1.classList.add('active');
+          userMsg.classList.add('visible');
+        }, 600);
+
+        // Step 2: Analisa (typing indicator)
+        setTimeout(() => {
+          step2.classList.add('active');
+          typing.classList.add('visible');
+        }, 2000);
+
+        // Step 3: Entrega (bot responds with consolidated message)
+        setTimeout(() => {
+          typing.classList.remove('visible');
+          step3.classList.add('active');
+          setTimeout(() => botMsg.classList.add('visible'), 200);
+        }, 3800);
+      }
+
+      /* ── Response SIM/NÃO Toggle ────────────────────── */
+      document.querySelectorAll('.response-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const current = btn.getAttribute('data-state');
+          btn.setAttribute('data-state', current === 'sim' ? 'nao' : 'sim');
+          btn.textContent = current === 'sim' ? 'NÃO' : 'SIM';
+        });
+      });
+
+      /* ── Checkout CTA Flow ──────────────────────────── */
+      const ctaCheckout  = document.getElementById('ctaCheckout');
+      const ctaSkipTrial = document.getElementById('ctaSkipTrial');
+
+      async function iniciarCheckout(button, testeGratis) {
+        // 1. Recover lead data from localStorage
+        const nome  = localStorage.getItem('ricco_nome')     || '';
+        const email = localStorage.getItem('ricco_email')    || '';
+        const fone  = localStorage.getItem('ricco_whatsapp') || '';
+
+        // Sem dados salvos ainda: abre o modal e retoma o checkout após o envio
+        if (!nome || !email || !fone) {
+          pendingCheckout = { button, testeGratis };
+          leadModal.hidden = false;
+          document.getElementById('leadNome').focus();
+          return;
+        }
+
+        // 2. Capture platform selection
+        const platformInput  = document.querySelector('input[name="platform"]:checked');
+        const versaoProduto  = platformInput ? platformInput.value : 'whatsapp';
+
+        // 3. Capture ?ref= from URL (com fallback pro AMBASSADOR_REF fixo, se configurado)
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref       = urlParams.get('ref') || AMBASSADOR_REF || '';
+
+        // 4. Show loading spinner
+        button.classList.add('loading');
+        button.disabled = true;
+
+        // 5. Build & send payload
+        const payload = {
+          Nome:           nome,
+          Email:          email,
+          Telefone:       fone,
+          VersaoProduto:  versaoProduto,
+          Ref:            ref,
+          TesteGratis:    testeGratis
+        };
+
+        try {
+          const response = await fetch(N8N_WEBHOOK_URL, {
+            method : 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body   : JSON.stringify(payload)
+          });
+
+          let targetUrl = '';
+          const contentType = response.headers.get('content-type') || '';
+
+          if (contentType.includes('application/json')) {
+            const data = await response.json();
+            if (Array.isArray(data) && data.length > 0) {
+              const firstItem = data[0];
+              // Adicionado o firstItem.checkoutUrl
+              targetUrl = firstItem.checkoutUrl || firstItem.link || firstItem.url || firstItem.paymentLink || firstItem.payment_link || (typeof firstItem === 'string' && firstItem.startsWith('http') ? firstItem : '');
+            } else if (data) {
+              // Adicionado o data.checkoutUrl
+              targetUrl = data.checkoutUrl || data.link || data.url || data.paymentLink || data.payment_link || (typeof data === 'string' && data.startsWith('http') ? data : '');
+            }
+          } else {
+            const text = await response.text();
+            if (text && text.trim().startsWith('http')) {
+              targetUrl = text.trim();
+            }
+          }
+
+          // 6. Open Asaas payment link in a new tab
+          if (targetUrl) {
+            window.open(targetUrl, '_blank', 'noopener,noreferrer');
+          } else {
+            alert('Erro ao gerar link de pagamento. Tente novamente.');
+          }
+        } catch (err) {
+          console.error('Checkout error:', err);
+          alert('Erro de conexão. Verifique sua internet e tente novamente.');
+        } finally {
+          button.classList.remove('loading');
+          button.disabled = false;
+        }
+      }
+
+      ctaCheckout.addEventListener('click', (e) => {
+        e.preventDefault();
+        iniciarCheckout(ctaCheckout, true);
+      });
+
+      ctaSkipTrial.addEventListener('click', (e) => {
+        e.preventDefault();
+        iniciarCheckout(ctaSkipTrial, false);
+      });
+      // Mobile navbar toggle logic
+      const navbarToggle = document.querySelector('.navbar-toggle');
+      const navbarMenu = document.querySelector('.navbar-menu');
+      if (navbarToggle && navbarMenu) {
+        navbarToggle.addEventListener('click', () => {
+          navbarToggle.classList.toggle('active');
+          navbarMenu.classList.toggle('active');
+        });
+        // Close menu when clicking links
+        navbarMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            navbarToggle.classList.remove('active');
+            navbarMenu.classList.remove('active');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

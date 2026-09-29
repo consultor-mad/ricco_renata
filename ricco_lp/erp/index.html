@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Caixa Lucrativo Essencial - Gestão Financeira Inteligente</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;700;800&amp;family=Hanken+Grotesk:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Using the provided Tailwind Configuration for the new Blue Theme -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eaf1ff",
+                    "primary-fixed": "#cde5ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#eff4ff",
+                    "on-surface-variant": "#404850",
+                    "secondary": "#545f73",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-fixed": "#dbe4ea",
+                    "primary-fixed-dim": "#94ccff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#9aa3a9",
+                    "on-surface": "#0b1c30",
+                    "outline": "#707881",
+                    "on-secondary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#111c2d",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "surface-bright": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#58a8e7",
+                    "on-primary-fixed": "#001d32",
+                    "surface-tint": "#006398",
+                    "error": "#ba1a1a",
+                    "tertiary": "#576065",
+                    "on-tertiary-fixed": "#141d21",
+                    "primary": "#006398",
+                    "inverse-surface": "#213145",
+                    "on-error": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed-variant": "#3f484d",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-secondary-container": "#586377",
+                    "secondary-container": "#d5e0f8",
+                    "outline-variant": "#c0c7d1",
+                    "on-tertiary-container": "#31393e",
+                    "inverse-primary": "#94ccff",
+                    "secondary-fixed-dim": "#bcc7de",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed": "#d8e3fb",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed-dim": "#bfc8ce",
+                    "on-primary-container": "#003b5e",
+                    "on-primary-fixed-variant": "#004b74"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "unit": "4px",
+                    "margin-desktop": "64px",
+                    "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg": ["anybody"],
+                    "body-lg": ["hankenGrotesk"],
+                    "headline-lg-mobile": ["anybody"],
+                    "headline-lg": ["anybody"],
+                    "title-md": ["hankenGrotesk"],
+                    "label-md": ["hankenGrotesk"],
+                    "body-sm": ["hankenGrotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "title-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Anybody', sans-serif; }
+        
+        .cta-gradient {
+            background: linear-gradient(135deg, #58a8e7 0%, #006398 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #58a8e7 0%, #006398 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 99, 152, 0.08);
+        }
+        .card-shadow-hover:hover {
+            box-shadow: 0px 8px 30px rgba(0, 99, 152, 0.15);
+            transform: translateY(-4px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface border-b border-outline-variant w-full h-20 sticky top-0 z-50">
+<nav class="flex justify-between items-center px-gutter max-w-container-max-width mx-auto h-full">
+<div class="flex items-center gap-3">
+<img alt="Caixa Lucrativo Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL08zerZ72G-GTPj3zg0hQUwn35UwHpXLNSunkL3H8pZlckC3dHvvh8_nNcss6uP5t8-3LvcAw3gX8AnfCV0i1mh-aXnOy1B5o5i5vzmU2qDglzeUNKa3LQGRNkDqyha-IT1c8oM7RyZld6oUvnwjtAVN_z5uzRgXvH41fM6hPAWfLWhT8LG6jRf6Go2kwac4KLf2FhMJ9S9iDviobU0MPV4b2eYKixbzVBhCdO_J8RfkDDeBPZMmyWsIgJpiu20r0SCvQiXP_BDsU"/>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-md text-body-lg" href="#diferenciais">Diferenciais</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-md text-body-lg" href="#funcionalidades">Funcionalidades</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-md text-body-lg" href="#integracoes">Integrações</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-title-md text-body-lg" href="#planos">Planos</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="text-primary font-bold text-body-lg px-4 py-2 hover:opacity-80 transition-opacity" href="https://cl.fastnfe.com.br/login">Login</a>
+<a class="cta-gradient text-on-primary font-bold px-6 py-3 rounded-DEFAULT shadow-lg hover:scale-105 transition-transform" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Começar Agora</a>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="py-16 md:py-24 bg-surface-container-low overflow-hidden">
+<div class="max-w-container-max-width mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+<div class="flex flex-col gap-6">
+<span class="font-bold text-label-md text-primary tracking-widest uppercase">15 anos de mercado em gestão empresarial</span>
+<h1 class="text-display-lg text-on-surface leading-tight">
+                    Gestão Financeira <br/>
+<span class="text-gradient">Lucrativa para PMEs</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-lg">
+                    Simplifique sua operação, automatize suas conciliações e tome decisões baseadas em dados reais com a plataforma mais intuitiva do mercado.
+                </p>
+<div class="flex flex-wrap gap-4 mt-4">
+<a class="cta-gradient text-on-primary font-bold text-body-lg px-8 py-4 rounded-lg shadow-xl hover:scale-105 transition-transform flex items-center gap-2" href="https://cl.fastnfe.com.br/login">
+                        Acessar Dashboard
+                        <span class="material-symbols-outlined">trending_up</span>
+</a>
+<a class="border-2 border-primary text-primary font-bold text-body-lg px-8 py-4 rounded-lg hover:bg-primary-container/20 transition-all" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">
+                        Ver Demonstração
+                    </a>
+</div>
+</div>
+<div class="relative flex justify-center items-center">
+<div class="absolute w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl -z-10"></div>
+<form class="w-full max-w-[520px] bg-surface-container-lowest border border-outline-variant rounded-xl p-8 card-shadow flex flex-col gap-5">
+<div>
+<span class="font-bold text-label-md text-primary tracking-widest uppercase">Aplicação rápida</span>
+<h2 class="text-headline-lg text-on-surface mt-2">Veja se o ERP é para sua empresa</h2>
+<p class="text-body-sm text-on-surface-variant mt-2">Preencha seus dados e receba o próximo passo para organizar sua gestão.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="flex flex-col gap-2 text-body-sm font-bold text-on-surface">
+Nome
+<input class="h-12 rounded-DEFAULT border border-outline-variant bg-surface-container-low px-4 text-body-sm font-normal text-on-surface focus:border-primary focus:ring-primary" type="text" name="nome" autocomplete="name" placeholder="Seu nome" />
+</label>
+<label class="flex flex-col gap-2 text-body-sm font-bold text-on-surface">
+WhatsApp
+<input class="h-12 rounded-DEFAULT border border-outline-variant bg-surface-container-low px-4 text-body-sm font-normal text-on-surface focus:border-primary focus:ring-primary" type="tel" name="whatsapp" autocomplete="tel" placeholder="11 9 8990 4848" />
+</label>
+</div>
+<label class="flex flex-col gap-2 text-body-sm font-bold text-on-surface">
+Email
+<input class="h-12 rounded-DEFAULT border border-outline-variant bg-surface-container-low px-4 text-body-sm font-normal text-on-surface focus:border-primary focus:ring-primary" type="email" name="email" autocomplete="email" placeholder="voce@empresa.com" />
+</label>
+<label class="flex flex-col gap-2 text-body-sm font-bold text-on-surface">
+Empresa
+<input class="h-12 rounded-DEFAULT border border-outline-variant bg-surface-container-low px-4 text-body-sm font-normal text-on-surface focus:border-primary focus:ring-primary" type="text" name="empresa" autocomplete="organization" placeholder="Nome da empresa" />
+</label>
+<label class="flex flex-col gap-2 text-body-sm font-bold text-on-surface">
+Faturamento mensal
+<select class="h-12 rounded-DEFAULT border border-outline-variant bg-surface-container-low px-4 text-body-sm font-normal text-on-surface focus:border-primary focus:ring-primary" name="faturamento">
+<option value="">Selecione uma opção</option>
+<option>Até 30 mil</option>
+<option>De 30 mil a 150 mil</option>
+<option>De 150 mil a 500 mil</option>
+<option>Mais que 500 mil</option>
+</select>
+</label>
+<a class="cta-gradient text-on-primary font-bold text-body-lg px-8 py-4 rounded-lg shadow-xl hover:scale-105 transition-transform text-center" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Aplicar agora</a>
+</form>
+</div>
+</div>
+</section>
+<!-- Value Proposition (Diferenciais) -->
+<section class="py-16 md:py-24 bg-surface scroll-mt-24" id="diferenciais">
+<div class="max-w-container-max-width mx-auto px-gutter">
+<div class="text-center mb-16 flex flex-col items-center">
+<h2 class="text-headline-lg text-on-surface">Por que escolher o Caixa Lucrativo?</h2>
+<div class="w-20 h-1.5 bg-primary mt-4 rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant card-shadow card-shadow-hover transition-all group">
+<div class="w-14 h-14 rounded-DEFAULT bg-primary-container flex items-center justify-center text-on-primary-container mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">speed</span>
+</div>
+<h3 class="text-title-md mb-4 text-on-surface">Agilidade Real</h3>
+<p class="text-body-sm text-on-surface-variant">Processos que levavam horas agora são feitos em segundos através da nossa automação inteligente.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant card-shadow card-shadow-hover transition-all group">
+<div class="w-14 h-14 rounded-DEFAULT bg-primary-container flex items-center justify-center text-on-primary-container mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">shield</span>
+</div>
+<h3 class="text-title-md mb-4 text-on-surface">Segurança Bancária</h3>
+<p class="text-body-sm text-on-surface-variant">Seus dados protegidos com criptografia de ponta a ponta e total conformidade com a LGPD.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant card-shadow card-shadow-hover transition-all group">
+<div class="w-14 h-14 rounded-DEFAULT bg-primary-container flex items-center justify-center text-on-primary-container mb-6 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<h3 class="text-title-md mb-4 text-on-surface">Insights de Valor</h3>
+<p class="text-body-sm text-on-surface-variant">Relatórios detalhados que mostram exatamente onde seu dinheiro está e como crescer mais rápido.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Highlight -->
+<section class="py-12 bg-surface scroll-mt-24" id="planos">
+<div class="max-w-container-max-width mx-auto px-gutter">
+<div class="bg-surface p-6 md:p-10 rounded-xl border border-outline-variant card-shadow">
+<div class="text-center mb-12">
+<h2 class="text-headline-lg text-on-surface">Planos que cabem no seu bolso</h2>
+<p class="text-body-lg text-on-surface-variant mt-2">Escolha a melhor opção para impulsionar seu crescimento.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-stretch">
+<!-- Plan Essencial -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant card-shadow flex flex-col hover:border-primary transition-colors">
+<h4 class="text-title-md text-on-surface mb-4">Essencial</h4>
+<div class="mb-5">
+<span class="text-headline-lg">R$ 197</span><span class="text-on-surface-variant text-body-sm">/mês</span>
+</div>
+<ul class="text-body-sm text-on-surface-variant space-y-2 flex-1">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> 03 usuários</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Nota Fiscal (NFe)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> NFCe e NFSe</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cadastro de clientes</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cadastro de produtos</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de estoque</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de compras</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Importação de XML</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Emissão de boletos</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Baixa por arquivo retorno</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Contas a receber</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Contas a pagar</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Suporte por WhatsApp</li>
+</ul>
+<a class="mt-8 border-2 border-primary text-primary font-bold py-3 rounded-DEFAULT hover:bg-primary-container/20 transition-colors text-center" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Selecionar</a>
+</div>
+<!-- Plan Inteligente (Highlighted) -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border-2 border-primary card-shadow flex flex-col relative scale-105 z-10">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-label-md font-bold uppercase tracking-tighter">Recomendado</div>
+<h4 class="text-title-md text-on-surface mb-4">Inteligente</h4>
+<div class="mb-5">
+<span class="text-headline-lg">R$ 449</span><span class="text-on-surface-variant text-body-sm">/mês</span>
+</div>
+<ul class="text-body-sm text-on-surface-variant space-y-2 flex-1">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> 05 usuários</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Nota Fiscal (NFe)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> NFCe e NFSe</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão comercial</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Análise de rentabilidade</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de comissão</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cadastro de clientes</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cadastro de produtos</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de estoque</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Aviso de estoque mínimo</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de compras</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Importação de XML</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Integrado com WhatsApp</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Emissão de boletos</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Baixa por arquivo retorno</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Contas a receber</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Contas a pagar</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Régua de cobrança</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Dashboard financeiro</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Dashboard comercial</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Suporte por WhatsApp</li>
+</ul>
+<a class="mt-8 cta-gradient text-on-primary font-bold py-4 rounded-DEFAULT shadow-lg hover:scale-105 transition-transform text-center" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Assinar Agora</a>
+</div>
+<!-- Plan Avançado -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border border-outline-variant card-shadow flex flex-col hover:border-primary transition-colors">
+<h4 class="text-title-md text-on-surface mb-4">Avançado</h4>
+<div class="mb-5">
+<span class="text-headline-lg">R$ 719</span><span class="text-on-surface-variant text-body-sm">/mês</span>
+</div>
+<ul class="text-body-sm text-on-surface-variant space-y-2 flex-1">
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> 05 usuários</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Nota Fiscal (NFe)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> NFCe e NFSe</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão comercial (CRM)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Análise de rentabilidade</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cliente 360</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Score de cliente</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de metas (vendas)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de comissão</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cadastro de clientes</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Cadastro de produtos</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de estoque</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Aviso de estoque mínimo</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Gestão de compras</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Importação de XML</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Integrado com WhatsApp</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Emissão de boletos</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Baixa por arquivo retorno</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Contas a receber</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Contas a pagar</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Régua de cobrança</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Dashboard financeiro</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Dashboard comercial</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Dashboard da PCP (produção)</li>
+<li class="flex items-start gap-2"><span class="material-symbols-outlined text-primary text-sm font-bold mt-0.5">check</span> Suporte por WhatsApp</li>
+</ul>
+<a class="mt-8 border-2 border-primary text-primary font-bold py-3 rounded-DEFAULT hover:bg-primary-container/20 transition-colors text-center" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Selecionar</a>
+</div>
+<!-- Plan Sob Medida -->
+<div class="bg-surface-container-lowest p-8 rounded-lg border border-outline-variant card-shadow flex flex-col hover:border-primary transition-colors">
+<h4 class="text-title-md text-on-surface mb-4">Sob Medida</h4>
+<div class="mb-6">
+<span class="text-headline-lg">Personalizado</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-6 flex-1">Plano personalizado para empresas com processos únicos, integrações específicas ou necessidades avançadas de operação.</p>
+<a class="mt-8 border-2 border-outline text-on-surface font-bold py-3 rounded-DEFAULT hover:bg-surface-container-low transition-colors text-center" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Falar com Consultor</a>
+</div>
+</div>
+<div class="mt-16">
+<div class="text-center mb-10">
+<h3 class="text-headline-lg text-on-surface">Veja as funcionalidades dos nossos planos</h3>
+<p class="text-body-lg text-on-surface-variant mt-2">Compare os detalhes e escolha a estrutura ideal para a sua operação.</p>
+</div>
+<div class="overflow-x-auto rounded-xl border border-outline-variant bg-surface-container-lowest">
+<table class="w-full min-w-[860px] border-collapse text-body-sm">
+<thead>
+<tr>
+<th class="w-[40%] bg-surface-container-lowest px-6 py-4 text-left font-bold text-on-surface">Funcionalidade</th>
+<th class="bg-[#ff5a1f] px-6 py-4 text-center font-bold text-white">Essencial</th>
+<th class="bg-[#10c7d4] px-6 py-4 text-center font-bold text-white">Inteligente</th>
+<th class="bg-[#5b1ff2] px-6 py-4 text-center font-bold text-white">Avançado</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Usuários inclusos</td><td class="px-6 py-3 text-center font-bold text-on-surface">03</td><td class="px-6 py-3 text-center font-bold text-on-surface">05</td><td class="px-6 py-3 text-center font-bold text-on-surface">05</td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Nota Fiscal (NFe)</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">NFCe e NFSe</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Cadastro de clientes</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Cadastro de produtos</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Gestão de estoque</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Gestão de compras</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Importação de XML</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Emissão de boletos</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Baixa por arquivo retorno</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Contas a receber</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Contas a pagar</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Suporte por WhatsApp</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Gestão comercial</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center font-bold text-on-surface">CRM</td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Análise de rentabilidade</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Gestão de comissão</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Aviso de estoque mínimo</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">WhatsApp integrado</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Régua de cobrança</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Dashboard financeiro</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Dashboard comercial</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Cliente 360</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Score de cliente</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr><td class="px-6 py-3 font-medium text-on-surface">Gestão de metas (vendas)</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+<tr class="bg-surface-container-low"><td class="px-6 py-3 font-medium text-on-surface">Dashboard da PCP (produção)</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center text-outline">-</td><td class="px-6 py-3 text-center"><span class="material-symbols-outlined text-[#27c840]" style="font-variation-settings: 'FILL' 1;">check_circle</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features (Funcionalidades) -->
+<section class="py-16 md:py-24 bg-surface-container-lowest scroll-mt-24" id="funcionalidades">
+<div class="max-w-container-max-width mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="text-headline-lg text-on-surface">Nossas funcionalidades</h2>
+<p class="text-body-lg text-on-surface-variant mt-2">Tudo o que sua operação precisa para controlar financeiro, vendas, estoque e fiscal em um só lugar.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Controle Financeiro</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Notas Fiscais de Produtos e Serviços</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Conciliação Bancária</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Impostos e Taxas</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Gestão de Compras</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Gestão de Vendas e Comissões</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Contas a Pagar</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Controle e Acesso de Funcionários</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Contas a Receber e Controle de Boletos</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Integrações</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">Controle de Estoque e Logística</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary rounded-DEFAULT px-6 py-5 flex items-center justify-between card-shadow">
+<span class="text-title-md text-on-surface">WhatsApp</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mt-16">
+<!-- Main Feature -->
+<div class="md:col-span-8 bg-surface-container p-10 rounded-lg border border-outline-variant flex flex-col md:flex-row gap-8 items-center overflow-hidden">
+<div class="flex-1">
+<h3 class="text-headline-lg text-on-surface mb-4">Controle Financeiro Completo</h3>
+<p class="text-body-lg text-on-surface-variant mb-6">Acompanhe cada entrada e saída com tags personalizadas e visualização em tempo real de fluxos de caixa complexos.</p>
+<ul class="space-y-3">
+<li class="flex items-center gap-2 text-primary font-bold"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span> Gestão de despesas</li>
+<li class="flex items-center gap-2 text-primary font-bold"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span> Receitas recorrentes</li>
+</ul>
+</div>
+<div class="w-full md:w-1/2 bg-surface-container-lowest h-56 rounded-lg flex items-center justify-center overflow-hidden border border-outline-variant p-8">
+<div class="w-full space-y-4">
+<div class="w-full h-3 bg-primary/10 rounded-full overflow-hidden">
+<div class="w-[75%] h-full bg-primary"></div>
+</div>
+<div class="w-[85%] h-3 bg-primary/10 rounded-full overflow-hidden">
+<div class="w-[45%] h-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Highlighted Feature -->
+<div class="md:col-span-4 bg-primary p-10 rounded-lg text-on-primary flex flex-col justify-between shadow-xl">
+<div>
+<span class="material-symbols-outlined text-5xl mb-6">account_balance_wallet</span>
+<h3 class="text-title-md text-2xl mb-4">Conciliação Bancária</h3>
+<p class="text-body-sm opacity-90 leading-relaxed">Sincronização automática com os principais bancos para garantir que seu saldo bata sempre.</p>
+</div>
+<a class="mt-8 bg-surface text-primary font-bold py-4 rounded-DEFAULT hover:bg-surface-bright transition-colors text-center" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Conectar Banco</a>
+</div>
+<!-- Small Feature 1 -->
+<div class="md:col-span-4 bg-surface-container-low p-8 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">receipt_long</span>
+<h3 class="text-title-md mb-3">NFS-e Automática</h3>
+<p class="text-body-sm text-on-surface-variant">Emissão de notas fiscais sem burocracia, integrada diretamente com as prefeituras.</p>
+</div>
+<!-- Small Feature 2 -->
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-lg border border-outline-variant flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1">
+<h3 class="text-title-md mb-3">Integrações Inteligentes</h3>
+<p class="text-body-sm text-on-surface-variant">Conecte-se com as ferramentas que você já usa: Stripe, Pagar.me, Asaas e muito mais.</p>
+</div>
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 bg-surface-container-lowest rounded-full flex items-center justify-center text-primary font-bold border border-outline-variant shadow-sm">A</div>
+<div class="w-12 h-12 bg-surface-container-lowest rounded-full flex items-center justify-center text-primary font-bold border border-outline-variant shadow-sm">S</div>
+<div class="w-12 h-12 bg-surface-container-lowest rounded-full flex items-center justify-center text-primary font-bold border border-outline-variant shadow-sm">P</div>
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center text-on-primary-container text-2xl font-bold shadow-lg">+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Integrations Horizontal Strip -->
+<section class="py-12 bg-surface border-y border-outline-variant scroll-mt-24" id="integracoes">
+<div class="max-w-container-max-width mx-auto px-gutter flex flex-col md:flex-row items-center justify-between gap-8">
+<p class="font-bold text-label-md text-on-surface-variant uppercase tracking-widest">Integrado com os melhores:</p>
+<div class="flex flex-wrap justify-center items-center gap-10 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="h-9 md:h-11 w-auto object-contain" src="assets/stripe.png" alt="Stripe" />
+<img class="h-9 md:h-11 w-auto object-contain" src="assets/pagarme.png" alt="Pagar.me" />
+<img class="h-9 md:h-11 w-auto object-contain" src="assets/hotmart.png" alt="Hotmart" />
+<img class="h-9 md:h-11 w-auto object-contain" src="assets/shopfy.png" alt="Shopify" />
+</div>
+</div>
+</section>
+<!-- CTA Final Section -->
+<section class="py-20 bg-primary text-on-primary">
+<div class="max-w-container-max-width mx-auto px-gutter text-center flex flex-col items-center gap-8">
+<h2 class="text-display-lg max-w-3xl">Pronto para transformar sua gestão financeira?</h2>
+<p class="text-body-lg opacity-90 max-w-xl">Junte-se a milhares de micro-empreendedores que já recuperaram o controle do seu lucro com o Caixa Lucrativo Essencial.</p>
+<div class="flex gap-4 mt-4">
+<a class="bg-surface text-primary font-bold px-12 py-5 rounded-lg text-xl shadow-2xl hover:scale-105 transition-transform" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo">Comece Grátis por 7 dias</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-on-background w-full py-16">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-gutter max-w-container-max-width mx-auto">
+<!-- Brand & Info -->
+<div class="flex flex-col gap-6">
+<div class="text-headline-lg font-bold text-surface-container-lowest">Caixa Lucrativo</div>
+<p class="text-surface-variant text-body-sm leading-relaxed">Sua solução definitiva para gestão financeira corporativa simplificada e eficiente.</p>
+<div class="flex gap-6 mt-2">
+<a class="text-primary-fixed hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-primary-fixed hover:text-white transition-colors" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo"><span class="material-symbols-outlined">mail</span></a>
+<a class="text-primary-fixed hover:text-white transition-colors" href="#"><span class="material-symbols-outlined">camera</span></a>
+</div>
+</div>
+<!-- Links 1 -->
+<div>
+<h5 class="text-surface-container-lowest font-bold mb-6 uppercase text-label-md tracking-wider">Plataforma</h5>
+<ul class="flex flex-col gap-4 text-surface-variant text-body-sm">
+<li><a class="hover:text-white transition-colors" href="#">Diferenciais</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Funcionalidades</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Integrações</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Planos</a></li>
+</ul>
+</div>
+<!-- Links 2 -->
+<div>
+<h5 class="text-surface-container-lowest font-bold mb-6 uppercase text-label-md tracking-wider">Jurídico &amp; Suporte</h5>
+<ul class="flex flex-col gap-4 text-surface-variant text-body-sm">
+<li><a class="hover:text-white transition-colors" href="#">Termos de Uso</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Privacidade</a></li>
+<li><a class="hover:text-white transition-colors" href="https://wa.me/5511989904848?text=Preciso%20de%20ajuda%20com%20o%20ERP%20Caixa%20Lucrativo">Suporte 24h</a></li>
+</ul>
+</div>
+<!-- Contact -->
+<div>
+<h5 class="text-surface-container-lowest font-bold mb-6 uppercase text-label-md tracking-wider">Contato</h5>
+<ul class="flex flex-col gap-4 text-surface-variant text-body-sm">
+<li><a class="flex items-center gap-2 hover:text-white transition-colors" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo"><span class="material-symbols-outlined text-sm">chat</span> WhatsApp: 11 9 8990 4848</a></li>
+<li><a class="flex items-center gap-2 hover:text-white transition-colors" href="https://wa.me/5511989904848?text=Quero%20saber%20mais%20sobre%20o%20ERP%20Caixa%20Lucrativo"><span class="material-symbols-outlined text-sm">email</span> Email: contato@caixalucrativo.com</a></li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> São Paulo, SP</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-gutter mt-16 pt-8 border-t border-outline-variant/10">
+<p class="text-center text-surface-variant opacity-60 text-body-sm">© 2024 Caixa Lucrativo Essencial. Todos os direitos reservados.</p>
+</div>
+</footer>
+<script>
+    // Reveal animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section > div').forEach(el => {
+        el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+        observer.observe(el);
+    });
+
+    // Subtle button pulse logic
+    setInterval(() => {
+        document.querySelectorAll('.cta-gradient').forEach(btn => {
+            btn.classList.add('scale-105');
+            setTimeout(() => btn.classList.remove('scale-105'), 300);
+        });
+    }, 4000);
+</script>
+</body></html>
