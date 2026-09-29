@@ -22,8 +22,8 @@
       --bg-primary:#0a0a14;
       --bg-secondary:#0f0f1e;
       --bg-tertiary:#14142a;
-      --purple:#6357E3;
-      --purple-mid:#8A7ADA;
+      --purple:#7C42E0;
+      --purple-mid:#A06FE8;
       --blue:#58A8E7;
       --cyan:#54D4E1;
       --gray-light:#F2F2F2;
@@ -37,7 +37,7 @@
       --glass-bg-hover:rgba(255,255,255,.07);
       --glass-border:rgba(255,255,255,.08);
       --glass-border-hover:rgba(255,255,255,.16);
-      --glow-purple:rgba(99,87,227,.42);
+      --glow-purple:rgba(124,66,224,.5);
       --glow-cyan:rgba(84,212,225,.16);
       --radius-sm:12px;
       --radius-md:20px;
@@ -66,7 +66,7 @@
     }
     @keyframes ctaPulse{
       0%,100%{box-shadow:0 0 20px var(--glow-purple),0 0 60px var(--glow-cyan)}
-      50%{box-shadow:0 0 35px var(--glow-purple),0 0 90px var(--glow-cyan),0 0 120px rgba(99,87,227,.12)}
+      50%{box-shadow:0 0 35px var(--glow-purple),0 0 90px var(--glow-cyan),0 0 120px rgba(124,66,224,.12)}
     }
     @keyframes float{
       0%,100%{transform:translate(0,0) scale(1)}
@@ -83,7 +83,7 @@
       30%{transform:translateY(-6px)}
     }
     @keyframes borderGlow{
-      0%,100%{border-color:rgba(99,87,227,.3)}
+      0%,100%{border-color:rgba(124,66,224,.3)}
       50%{border-color:rgba(84,212,225,.5)}
     }
     @keyframes slideInRight{
@@ -399,7 +399,7 @@
       padding: 120px 0 80px;
       overflow: hidden;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(99,87,227,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(124,66,224,.27) 0%, transparent 70%),
         radial-gradient(ellipse 60% 50% at 30% 70%, rgba(84,212,225,.1) 0%, transparent 60%),
         var(--bg-deepest);
     }
@@ -408,7 +408,7 @@
       position: absolute;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle,rgba(99,87,227,.18),transparent 70%);
+      background: radial-gradient(circle,rgba(124,66,224,.18),transparent 70%);
       border-radius: 50%;
       top: -120px;
       right: -150px;
@@ -572,7 +572,7 @@
       width: 84%;
       margin: 0 auto;
       z-index: 2;
-      filter: drop-shadow(0 30px 46px rgba(0,0,0,.6)) drop-shadow(0 0 44px rgba(99,87,227,.35));
+      filter: drop-shadow(0 30px 46px rgba(0,0,0,.6)) drop-shadow(0 0 44px rgba(124,66,224,.35));
       animation: heroPortraitFloat 8s ease-in-out infinite;
     }
     @keyframes heroPortraitFloat {
@@ -689,7 +689,7 @@
     .checklist::before{
       content:'';position:absolute;
       width:380px;height:380px;
-      background:radial-gradient(circle,rgba(99,87,227,.14),transparent 70%);
+      background:radial-gradient(circle,rgba(124,66,224,.14),transparent 70%);
       border-radius:50%;
       top:-140px;right:-120px;
       animation:float 14s ease-in-out infinite;
@@ -1012,7 +1012,7 @@
     .chat-demo-section{
       padding:80px 24px;
       background:
-        radial-gradient(ellipse 70% 50% at 50% 50%,rgba(99,87,227,.08),transparent),
+        radial-gradient(ellipse 70% 50% at 50% 50%,rgba(124,66,224,.08),transparent),
         var(--bg-secondary);
     }
     .chat-demo-section h2{
@@ -1043,7 +1043,7 @@
       transition:all .5s ease;
     }
     .chat-step.active{
-      background:rgba(99,87,227,.12);
+      background:rgba(124,66,224,.12);
       border-color:var(--purple);
       box-shadow:0 0 24px var(--glow-purple);
     }
@@ -1212,7 +1212,7 @@
     /* ── Response / Checkout Section ────────────────── */
     .response-section{
       background:
-        radial-gradient(ellipse 60% 40% at 50% 30%,rgba(99,87,227,.1),transparent),
+        radial-gradient(ellipse 60% 40% at 50% 30%,rgba(124,66,224,.1),transparent),
         var(--bg-secondary);
       color:#fff;
       padding:80px 24px 90px;
@@ -1268,13 +1268,13 @@
       border:1px solid rgba(84,212,225,.3);
     }
     .response-btn[data-state="nao"]{
-      background:rgba(99,87,227,.3);
+      background:rgba(124,66,224,.3);
       color:var(--purple-mid);
-      border:1px solid rgba(99,87,227,.4);
+      border:1px solid rgba(124,66,224,.4);
     }
     .response-note{
-      background:rgba(99,87,227,.15);
-      border:1px solid rgba(99,87,227,.3);
+      background:rgba(124,66,224,.15);
+      border:1px solid rgba(124,66,224,.3);
       border-radius:var(--radius-pill);
       padding:18px 30px;
       max-width:700px;margin:0 auto 56px;
@@ -1418,7 +1418,7 @@
     .offer-section::before{
       content:'';position:absolute;
       width:420px;height:420px;
-      background:radial-gradient(circle,rgba(99,87,227,.12),transparent 70%);
+      background:radial-gradient(circle,rgba(124,66,224,.12),transparent 70%);
       border-radius:50%;
       top:-160px;left:50%;transform:translateX(-50%);
       animation:float 16s ease-in-out infinite;
@@ -1519,7 +1519,7 @@
     }
     .pricing-card:hover{transform:translateY(-4px)}
     .pricing-card--featured{
-      border-color:rgba(99,87,227,.55);
+      border-color:rgba(124,66,224,.55);
       background:var(--glass-bg-hover);
       box-shadow:0 20px 50px var(--glow-purple);
     }
@@ -1593,7 +1593,7 @@
       padding:120px 24px 100px;
       overflow:hidden;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 100%,rgba(99,87,227,.25),transparent),
+        radial-gradient(ellipse 80% 60% at 50% 100%,rgba(124,66,224,.35),transparent),
         radial-gradient(ellipse 60% 50% at 20% 80%,rgba(84,212,225,.12),transparent),
         linear-gradient(180deg,var(--bg-primary) 0%,var(--bg-deepest) 100%);
     }
@@ -1793,7 +1793,6 @@
     <nav class="navbar">
       <div class="navbar-container">
         <a href="#" class="navbar-logo">
-          <img src="assets/rico.webp" alt="Ricco Logo" class="logo-img-white" />
           <div class="logo-text">
             <span class="logo-main">Renata Pontes</span>
             <span class="logo-sub">Gestão financeira para PMEs</span>
