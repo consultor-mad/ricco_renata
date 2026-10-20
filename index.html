@@ -6,8 +6,9 @@
     <title>Caixa Lucrativo Essencial</title>
     <meta name="description" content="Assistência financeira acessível para MEIs e microempresas. Tecnologia e inteligência artificial para clareza financeira contínua." />
 
-    <link rel="icon" type="image/webp" href="assets/rico.webp" />
-    <link rel="apple-touch-icon" href="assets/rico.webp" />
+    <link rel="icon" type="image/png" href="assets/logo-rp-sigla.png" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/png" href="assets/logo-rp-sigla-branco.png" media="(prefers-color-scheme: dark)" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -323,25 +324,35 @@
       height: 34px;
       filter: brightness(0) invert(1);
     }
-    .navbar-logo .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
+    /* Logos da Renata são pretos com fundo transparente: ficam brancos no navbar escuro */
+    .navbar-logo .logo-sigla,
+    .navbar-logo .logo-wordmark {
+      display: block;
+      width: auto;
+      filter: brightness(0) invert(1);
     }
-    .navbar-logo .logo-sub {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: rgba(255,255,255,0.65);
-      white-space: nowrap;
-    }
-    .navbar-logo .logo-main {
-      font-family: 'League Spartan', sans-serif;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      margin-bottom: 2px;
-      color: #fff;
+    .navbar-logo .logo-sigla { height: 38px; }
+    .navbar-logo .logo-wordmark { height: 34px; }
+    .navbar-logo .logo-sigla,
+    .navbar-logo .logo-wordmark { flex-shrink: 0; max-width: none; }
+    @media (max-width: 720px) {
+      .navbar-logo { gap: 8px; }
+      .navbar-logo .logo-sigla { height: 32px; }
+      .navbar-logo .logo-wordmark { height: 28px; }
+      .navbar .navbar-toggle { display: flex; }
+      .navbar .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding: 20px 24px 24px;
+        background: rgba(6, 6, 14, 0.96);
+        border-bottom: 1px solid var(--glass-border);
+      }
+      .navbar .navbar-menu.active { display: flex; }
+      .navbar .navbar-menu a { font-size: 16px; }
     }
     .navbar-menu {
       list-style: none;
@@ -1822,10 +1833,8 @@
     <nav class="navbar">
       <div class="navbar-container">
         <a href="#" class="navbar-logo">
-          <div class="logo-text">
-            <span class="logo-main">Renata Pontes</span>
-            <span class="logo-sub">Gestão financeira para PMEs</span>
-          </div>
+          <img class="logo-sigla" src="assets/logo-rp-sigla.png" alt="" />
+          <img class="logo-wordmark" src="assets/logo-renata-pontes.png" alt="Renata Pontes" />
         </a>
         <button class="navbar-toggle" aria-label="Abrir menu">
           <span></span>
