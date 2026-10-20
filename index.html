@@ -1588,6 +1588,29 @@
     }
     .pricing-features li img{width:18px;flex-shrink:0;margin-top:1px}
     .pricing-features li.is-off{color:var(--text-muted)}
+    .pricing-cta{
+      margin-top:24px;
+      width:100%;padding:14px 20px;
+      border-radius:var(--radius-pill);
+      border:1px solid var(--glass-border-hover);
+      background:transparent;color:var(--text-primary);
+      font-family:'League Spartan','Poppins',sans-serif;
+      font-size:16px;font-weight:700;cursor:pointer;
+      transition:background .2s,border-color .2s,transform .2s;
+    }
+    .pricing-cta:hover{background:var(--glass-bg-hover);border-color:var(--purple-mid)}
+    .pricing-cta--featured{
+      border:none;background:var(--gradient-cta);
+      box-shadow:0 8px 24px var(--glow-purple);
+    }
+    .pricing-cta--featured:hover{background:var(--gradient-cta);transform:translateY(-2px)}
+    .pricing-card.is-selected{border-color:var(--purple-mid)}
+    .checkout-plan{
+      margin:0 0 10px;text-align:center;
+      font-size:14px;color:var(--text-secondary);
+    }
+    .checkout-plan strong{color:var(--text-primary)}
+    .checkout-plan a{color:var(--cyan);margin-left:6px;text-decoration:underline;text-underline-offset:3px}
     @media(max-width:768px){
       .pricing-grid{grid-template-columns:1fr;max-width:400px}
       .pricing-card--featured{order:-1}
@@ -2142,6 +2165,7 @@
               <li class="is-off"><img src="assets/cross.webp" alt="" />Sem metas e alertas</li>
               <li class="is-off"><img src="assets/cross.webp" alt="" />Sem análise mensal da IA</li>
             </ul>
+            <button class="pricing-cta" type="button" data-plan="registro">Escolher Registro</button>
           </article>
           <article class="pricing-card pricing-card--featured reveal reveal-delay-2">
             <span class="pricing-badge">Mais escolhido</span>
@@ -2157,6 +2181,7 @@
               <li><img src="assets/check.webp" alt="" />Até 3 usuários</li>
               <li><img src="assets/check.webp" alt="" />Exportação para o contador</li>
             </ul>
+            <button class="pricing-cta pricing-cta--featured" type="button" data-plan="controle">Escolher Controle</button>
           </article>
           <article class="pricing-card reveal reveal-delay-3">
             <div class="pricing-name">Ricco Sócio</div>
@@ -2172,6 +2197,7 @@
               <li><img src="assets/check.webp" alt="" />WhatsApp prioritário</li>
               <li><img src="assets/check.webp" alt="" />Relatório executivo trimestral</li>
             </ul>
+            <button class="pricing-cta" type="button" data-plan="socio">Escolher Sócio</button>
           </article>
         </div>
         <p class="offer-note reveal">Menos que o custo de uma decisão errada.</p>
@@ -2217,6 +2243,7 @@
                 </div>
               </label>
             </div>
+            <p class="checkout-plan" id="checkoutPlan"></p>
             <p class="checkout-caption">Preencha seus dados e comece agora — <strong>15 dias grátis</strong>, sem compromisso.</p>
             <button class="cta-checkout" id="ctaCheckout" type="button">
               <span class="cta-label">Começar meus 15 dias grátis</span>
@@ -2245,7 +2272,35 @@
       // código dela aqui (ex: 'christiane-kryda') para que todo lead/checkout
       // feito por esse domínio já venha automaticamente atribuído a ela, mesmo
       // sem um parâmetro ?ref= na URL. Um ?ref= na URL, se presente, tem prioridade.
-      const AMBASSADOR_REF = '';
+      const AMBASSADOR_REF = 'renatapontes';
+
+      /* ── Planos ────────────────────────────────────── */
+      // O preço real é definido no n8n a partir da chave do plano; aqui é só exibição.
+      const PLANS = {
+        registro: { nome: 'Ricco Registro', preco: 'R$ 197/mês' },
+        controle: { nome: 'Ricco Controle', preco: 'R$ 297/mês' },
+        socio:    { nome: 'Ricco Sócio',    preco: 'R$ 697/mês' }
+      };
+      let selectedPlan = 'controle';
+
+      function renderSelectedPlan() {
+        const plan = PLANS[selectedPlan];
+        document.getElementById('checkoutPlan').innerHTML =
+          'Plano escolhido: <strong>' + plan.nome + '</strong> · ' + plan.preco +
+          '<a href="#precos">trocar</a>';
+        document.querySelectorAll('.pricing-cta').forEach(btn => {
+          btn.closest('.pricing-card').classList.toggle('is-selected', btn.dataset.plan === selectedPlan);
+        });
+      }
+
+      document.querySelectorAll('.pricing-cta').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedPlan = btn.dataset.plan;
+          renderSelectedPlan();
+          document.getElementById('checkoutArea').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+      renderSelectedPlan();
 
       /* ── Lead Modal (Capture + localStorage) ───────── */
       const leadModal    = document.getElementById('leadModal');
@@ -2435,6 +2490,7 @@
           Email:          email,
           Telefone:       fone,
           VersaoProduto:  versaoProduto,
+          Plano:          selectedPlan,
           Ref:            ref,
           TesteGratis:    testeGratis
         };
